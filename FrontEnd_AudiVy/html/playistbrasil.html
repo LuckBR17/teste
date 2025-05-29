@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Playlist Brasil</title>
+    <link rel="stylesheet" href="../css/playistbrasil.css" />
+</head>
+<body>
+    <header>
+        <h1>Playlist Brasil</h1>
+        <a href="../html/inicio.html" class="back-link">Voltar</a>
+    </header>
+    <main>
+        <section class="playlist">
+            <ul id="song-list">
+                <!-- Placeholder songs -->
+                <li data-src="../images/song1.mp3" data-cover="../images/placeholder1.jpg">
+                    <img src="../images/placeholder1.jpg" alt="Capa da música 1" />
+                    <div class="song-info">
+                        <h3>Música 1</h3>
+                        <p>Artista 1</p>
+                    </div>
+                </li>
+                <li data-src="../images/song2.mp3" data-cover="../images/placeholder2.jpg">
+                    <img src="../images/placeholder2.jpg" alt="Capa da música 2" />
+                    <div class="song-info">
+                        <h3>Música 2</h3>
+                        <p>Artista 2</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <section class="player">
+            <img id="cover" src="../images/placeholder1.jpg" alt="Capa da música" />
+            <audio id="audio" controls>
+                Seu navegador não suporta o elemento de áudio.
+            </audio>
+            <div id="current-song-info">
+                <h3 id="current-title">Música 1</h3>
+                <p id="current-artist">Artista 1</p>
+            </div>
+        </section>
+    </main>
+    <script src="../js/playistbrasil.js"></script>
+</body>
+</html>

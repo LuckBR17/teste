@@ -1,0 +1,197 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #10002b; /* roxo escuro consistente com outras telas */
+    color: #cfd8f7;
+    margin: 0;
+    padding: 40px 60px 120px 60px;
+    box-sizing: border-box;
+}
+
+.playlist-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.cover-image img {
+    width: 180px;
+    height: 180px;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+}
+
+.playlist-info h1 {
+    font-size: 36px;
+    font-weight: 900;
+    background: linear-gradient(90deg, #f72585, #7209b7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0 0 10px 0;
+}
+
+.playlist-info p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: #b5b5ff;
+}
+
+.playlist-controls {
+    margin: 20px 0;
+    display: flex;
+    gap: 15px;
+}
+
+.playlist-controls button {
+    background: linear-gradient(90deg, #f72585, #7209b7);
+    border: none;
+    color: white;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.playlist-controls button:hover {
+    background: linear-gradient(90deg, #7209b7, #f72585);
+}
+
+.search-bar {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: none;
+    background: #240046;
+    color: #cfd8f7;
+    font-size: 14px;
+    outline: none;
+    margin-bottom: 30px;
+}
+
+.playlist-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    font-size: 14px;
+}
+
+.playlist-table thead th {
+    text-align: left;
+    padding: 10px 15px;
+    font-weight: 700;
+    font-size: 14px;
+    color: #b5b5ff;
+    border-bottom: 1px solid #3b4a9a;
+}
+
+.playlist-table tbody tr {
+    background: #240046;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 12px;
+}
+
+.playlist-table tbody tr:hover {
+    background: #3b1f6f;
+}
+
+.playlist-table tbody td {
+    padding: 15px;
+    vertical-align: middle;
+    color: #cfd8f7;
+}
+
+.song-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.song-title img {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.song-title strong {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.song-title span {
+    font-size: 12px;
+    color: #b5b5ff;
+    display: block;
+}
+
+.custom-player {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(90deg, #f72585, #7209b7);
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.3);
+    color: white;
+    z-index: 1000;
+}
+
+.player-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+}
+
+.player-info img {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.player-text h4 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.player-text p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#play-pause-btn {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+}
+
+#progress-bar {
+    width: 200px;
+    cursor: pointer;
+}
+
+#current-time, #duration {
+    font-size: 12px;
+    min-width: 35px;
+    text-align: center;
+    color: white;
+}
