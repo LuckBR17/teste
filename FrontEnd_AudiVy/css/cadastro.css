@@ -1,48 +1,101 @@
-@import "/css/login.css";
+@import "login.css";
 
+body {
+    background-color: #21143A;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-/**/
+.container {
+    background-color: #45228B;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px;
+}
 
-.cadastro-btn {
-    padding: 16px 50px; 
-    font-size: 16px; 
-    border-radius: 30px; 
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    width: 50px;
+    height: auto;
+    margin-right: 12px;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.main-content h2 {
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form label {
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form input {
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    border: none;
+    font-size: 16px;
+}
+
+.btn {
     background-color: #FA973C;
     color: black;
     font-weight: bold;
+    padding: 14px;
+    border: none;
+    border-radius: 30px;
     cursor: pointer;
     transition: transform 0.2s ease;
 }
 
-.cadastro-btn:hover {
+.btn:hover {
     transform: scale(1.05);
-    background-color: #FA973C;
+    background-color: #e68a2e;
 }
 
-.login-option {
-    width: 100%;
+.redirect-text {
     margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px solid #282828;
     text-align: center;
+    font-size: 14px;
 }
 
-.login-option p {
-    margin-bottom: 16px;
-    color: #b3b3b3;
-}
-
-.login-btn {
-    display: inline-block;
-    padding: 12px 40px;
-    border-radius: 25px;
-    border: 1px solid #727272;
-    color: white;
-    font-weight: bold;
+.redirect-text a {
+    color: #FA973C;
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    font-weight: 600;
 }
 
-.login-btn:hover {
-    background-color: #282828;
+.redirect-text a:hover {
+    text-decoration: underline;
 }
