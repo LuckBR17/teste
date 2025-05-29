@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audivy - Sua nova experiência musical</title>
+    <link rel="stylesheet" href="../css/inicio.css">
+</head>
+<body>
+    <!-- Header mobile com menu hambúrguer -->
+    <div class="mobile-header">
+        <button class="menu-toggle">☰</button>
+        <div class="mobile-logo">Audivy</div>
+        <div></div>
+    </div>
+
+    <!-- Overlay para fechar sidebar no mobile -->
+    <div class="sidebar-overlay"></div>
+ 
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="logo-icon"></div>
+            <h1>Audivy</h1>
+        </div>
+
+        <nav class="main-nav">
+            <a href="#" class="nav-item active">Início</a>
+            <a href="#" class="nav-item">Explorar</a>
+            <a href="#" class="nav-item">Recentes</a>
+        </nav>
+
+        <div class="nav-section">
+            <h3 class="nav-title">Sua biblioteca</h3>
+            <a href="#" class="nav-item">Playlists</a>
+            <a href="#" class="nav-item">Artistas</a>
+            <a href="#" class="nav-item">Álbuns</a>
+        </div>
+
+        <div class="nav-section">
+            <h3 class="nav-title">Playlists</h3>
+            <div class="playlist">
+                <div class="playlist-image">T</div>
+                <div class="playlist-info">
+                    <h4>Top Hits 2025</h4>
+                    <p>Playlist • Audivy</p>
+                </div>
+            </div>
+            <div class="playlist">
+                <div class="playlist-image">E</div>
+                <div class="playlist-info">
+                    <h4>Eletrônica Mix</h4>
+                    <p>Playlist • Audivy</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="header">
+            <div class="search-bar">
+                <input type="text" placeholder="O que você quer ouvir?">
+            </div>
+
+            <div class="user-profile">
+                <div class="avatar">U</div>
+                <span>Usuário</span>
+            </div>
+        </header>
+
+        <section class="welcome-section">
+            <h2 class="welcome-message">Bem-vindo ao Audivy</h2>
+            <div class="wave-visualizer">
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Recomendado para você</h2>
+            
+            <div class="cards-container">
+                <div class="music-card">
+                    <div class="card-image">
+                        <img src="../images/nirvana2.jpg" alt="Capa do álbum">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <h3 class="card-title">Peso Certo</h3>
+                    <p class="card-subtitle">As melhores do rock</p>
+                </div>
+                
+                <div class="music-card">
+                    <div class="card-image">
+                        <img src="../images/timmaia.png" alt="Capa do álbum">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <h3 class="card-title">Vibe Brasil</h3>
+                    <p class="card-subtitle">O melhor do Brasil</p>
+                </div>
+                
+                <div class="music-card">
+                    <div class="card-image">
+                        <img src="../images/modelz.jpeg" alt="Capa do álbum">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <h3 class="card-title">No Limit</h3>
+                    <p class="card-subtitle">As melhores faixas</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="trending-tracks">
+            <h2 class="section-title">Tendências do momento</h2>
+            
+            <div class="track-list">
+                <div class="track-item">
+                    <div class="track-number">1</div>
+                    <div class="track-image">
+                        <img src="../images/toosweet.jpeg" alt="Capa da música">
+                    </div>
+                    <div class="track-info">
+                        <h3 class="track-title">Too Sweet</h3>
+                        <p class="track-artist">Hozier</p>
+                    </div>
+                    <div class="track-album">Unheard</div>
+                    <div class="track-duration">4:08</div>
+                </div>
+                
+                <div class="track-item">
+                    <div class="track-number">2</div>
+                    <div class="track-image">
+                        <img src="../images/getlucky.jpg" alt="Capa da música">
+                    </div>
+                    <div class="track-info">
+                        <h3 class="track-title">Get Lucky</h3>
+                        <p class="track-artist">Daft Punk</p>
+                    </div>
+                    <div class="track-album">Single</div>
+                    <div class="track-duration">4:07</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="player">
+        <div class="now-playing">
+            <img src="../images/toosweet.jpeg" alt="Música atual" class="current-track-image">
+            <div class="current-track-info">
+                <h4>Nome da Música Atual</h4>
+                <p>Artista da Música</p>
+            </div>
+            <button class="like-button">♥</button>
+        </div>
+
+        <div class="player-controls">
+            <div class="control-buttons">
+                <button class="control-button">⟲</button>
+                <button class="control-button">◀◀</button>
+                <button class="control-button play">▶</button>
+                <button class="control-button">▶▶</button>
+                <button class="control-button">⟳</button>
+            </div>
+            <div class="progress-bar">
+                <span class="current-time">0:45</span>
+                <div class="progress-container">
+                    <div class="progress-inner"></div>
+                </div>
+                <span class="total-time">3:30</span>
+            </div>
+        </div>
+
+        <div class="player-options">
+            <button class="option-button">≡</button>
+            <button class="option-button">🔊</button>
+            <div class="volume-slider">
+                <div class="volume-level"></div>
+            </div>
+        </div>
+    </footer>
+
+    <audio id="audio-player"></audio>
+    <script src="../js/inicio.js"></script>
+</body>
+</html>

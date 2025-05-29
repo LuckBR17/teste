@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <div class="login-container">
+        <header>
+            <div class="logo">
+                <img src="/images/logo.png" alt="Logo Audivy" class="logo-image">
+                <div>Audivy</div>
+            </div>
+        </header>
+        
+        <main class="login-content">
+            <h1>Entre para continuar</h1>
+            
+            <form class="login-form">
+                <div class="form-group">
+                    <label for="email">E-mail ou nome de usuário</label>
+                    <input type="text" id="email" placeholder="E-mail ou nome de usuário">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" placeholder="Senha">
+                </div>
+                
+                <div class="form-option">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember" checked>
+                        <label for="remember">Lembrar de mim</label>
+                    </div>
+                    <button type="submit" class="login-btn">Entrar</button>
+                </div>
+                
+               
+            </form>
+            
+            <div class="signup-option">
+                <p>Não tem uma conta?</p>
+                <a href="#" class="signup-btn">Inscrever-se no Audivy</a>
+            </div>
+        </main>
+        
+        <footer>
+            <p>Esta página é protegida pelo Google reCAPTCHA para garantir que você não é um robô. <a href="#">Saiba mais</a></p>
+        </footer>
+    </div>
+    
+    <script src="login.js"></script>
+</body>
+</html>

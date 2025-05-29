@@ -1,0 +1,47 @@
+@import "/css/login.css";
+
+
+
+.cadastro-btn {
+    padding: 16px 50px; 
+    font-size: 16px; 
+    border-radius: 30px; 
+    background-color: #FA973C;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.cadastro-btn:hover {
+    transform: scale(1.05);
+    background-color: #FA973C;
+}
+
+.login-option {
+    width: 100%;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #282828;
+    text-align: center;
+}
+
+.login-option p {
+    margin-bottom: 16px;
+    color: #b3b3b3;
+}
+
+.login-btn {
+    display: inline-block;
+    padding: 12px 40px;
+    border-radius: 25px;
+    border: 1px solid #727272;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #282828;
+}
