@@ -1,3 +1,107 @@
+// Banco de dados simulado de músicas
+const musicDatabase = [
+    {
+        id: 1,
+        title: "Too Sweet",
+        artist: "Hozier",
+        album: "Unheard",
+        duration: "4:08",
+        image: "../images/toosweet.jpeg",
+        audio: "../images/toosweetmusica.mp3",
+        genre: "Indie Rock"
+    },
+    {
+        id: 2,
+        title: "Get Lucky",
+        artist: "Daft Punk",
+        album: "Random Access Memories",
+        duration: "4:07",
+        image: "../images/getlucky.jpg",
+        audio: "../images/getluckymusica.mp3",
+        genre: "Electronic"
+    },
+    {
+        id: 3,
+        title: "Peso Certo",
+        artist: "Nirvana",
+        album: "Rock Collection",
+        duration: "3:45",
+        image: "../images/nirvana2.jpg",
+        audio: null,
+        genre: "Rock"
+    },
+    {
+        id: 4,
+        title: "Vibe Brasil",
+        artist: "Tim Maia",
+        album: "Soul Brasil",
+        duration: "4:12",
+        image: "../images/timmaia.png",
+        audio: null,
+        genre: "Soul"
+    },
+    {
+        id: 5,
+        title: "No Limit",
+        artist: "G-Eazy",
+        album: "The Beautiful & Damned",
+        duration: "3:58",
+        image: "../images/modelz.jpeg",
+        audio: null,
+        genre: "Hip Hop"
+    },
+    {
+        id: 6,
+        title: "Bohemian Rhapsody",
+        artist: "Queen",
+        album: "A Night at the Opera",
+        duration: "5:55",
+        image: "../images/nirvana2.jpg",
+        audio: null,
+        genre: "Rock"
+    },
+    {
+        id: 7,
+        title: "Billie Jean",
+        artist: "Michael Jackson",
+        album: "Thriller",
+        duration: "4:54",
+        image: "../images/timmaia.png",
+        audio: null,
+        genre: "Pop"
+    },
+    {
+        id: 8,
+        title: "Smells Like Teen Spirit",
+        artist: "Nirvana",
+        album: "Nevermind",
+        duration: "5:01",
+        image: "../images/nirvana2.jpg",
+        audio: null,
+        genre: "Grunge"
+    },
+    {
+        id: 9,
+        title: "One More Time",
+        artist: "Daft Punk",
+        album: "Discovery",
+        duration: "5:20",
+        image: "../images/getlucky.jpg",
+        audio: null,
+        genre: "Electronic"
+    },
+    {
+        id: 10,
+        title: "Azul da Cor do Mar",
+        artist: "Tim Maia",
+        album: "Tim Maia 1970",
+        duration: "3:33",
+        image: "../images/timmaia.png",
+        audio: null,
+        genre: "Soul"
+    }
+];
+
 // Aguarda o carregamento completo do DOM
 document.addEventListener('DOMContentLoaded', () => {
     // Seleciona elementos principais
@@ -16,14 +120,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentTrackInfo = document.querySelector('.current-track-info h4');
     const currentTrackImage = document.querySelector('.current-track-image');
     const currentTimeDisplay = document.querySelector('.current-time');
+    const searchInput = document.querySelector('.search-bar input');
 
     let progressAnimationId; // ID da animação de progresso
+    let searchResults = []; // Resultados da busca
 
     // Inicializa o visualizador de ondas
     generateWaveVisualizer();
 
     // Funcionalidade do menu mobile
     initializeMobileMenu();
+
+    // Inicializa o sistema de busca
+    initializeSearch();
 
     // Adiciona eventos aos botões de play
     playButtons.forEach(button => button.addEventListener('click', togglePlay));
@@ -320,5 +429,202 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
+    }
+
+    // Função para inicializar o sistema de busca
+    function initializeSearch() {
+        if (!searchInput) return;
+
+        let searchTimeout;
+        
+        // Evento de input para busca em tempo real
+        searchInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            const query = this.value.trim();
+            
+            if (query.length === 0) {
+                hideSearchResults();
+                return;
+            }
+            
+            // Debounce para evitar muitas buscas
+            searchTimeout = setTimeout(() => {
+                performSearch(query);
+            }, 300);
+        });
+
+        // Evento para fechar resultados ao clicar fora
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.search-bar') && !e.target.closest('.search-results')) {
+                hideSearchResults();
+            }
+        });
+
+        // Evento para navegação com teclado
+        searchInput.addEventListener('keydown', function(e) {
+            const resultsContainer = document.querySelector('.search-results');
+            if (!resultsContainer) return;
+
+            const items = resultsContainer.querySelectorAll('.search-result-item');
+            let currentIndex = Array.from(items).findIndex(item => item.classList.contains('selected'));
+
+            switch(e.key) {
+                case 'ArrowDown':
+                    e.preventDefault();
+                    currentIndex = currentIndex < items.length - 1 ? currentIndex + 1 : 0;
+                    updateSelection(items, currentIndex);
+                    break;
+                case 'ArrowUp':
+                    e.preventDefault();
+                    currentIndex = currentIndex > 0 ? currentIndex - 1 : items.length - 1;
+                    updateSelection(items, currentIndex);
+                    break;
+                case 'Enter':
+                    e.preventDefault();
+                    if (currentIndex >= 0 && items[currentIndex]) {
+                        items[currentIndex].click();
+                    }
+                    break;
+                case 'Escape':
+                    hideSearchResults();
+                    searchInput.blur();
+                    break;
+            }
+        });
+    }
+
+    // Função para realizar a busca
+    function performSearch(query) {
+        const results = musicDatabase.filter(song => {
+            const searchTerm = query.toLowerCase();
+            return song.title.toLowerCase().includes(searchTerm) ||
+                   song.artist.toLowerCase().includes(searchTerm) ||
+                   song.album.toLowerCase().includes(searchTerm) ||
+                   song.genre.toLowerCase().includes(searchTerm);
+        });
+
+        searchResults = results;
+        displaySearchResults(results, query);
+    }
+
+    // Função para exibir os resultados da busca
+    function displaySearchResults(results, query) {
+        // Remove container de resultados anterior se existir
+        const existingResults = document.querySelector('.search-results');
+        if (existingResults) {
+            existingResults.remove();
+        }
+
+        if (results.length === 0) {
+            showNoResults(query);
+            return;
+        }
+
+        // Cria container de resultados
+        const resultsContainer = document.createElement('div');
+        resultsContainer.className = 'search-results';
+        
+        // Adiciona título dos resultados
+        const resultsHeader = document.createElement('div');
+        resultsHeader.className = 'search-results-header';
+        resultsHeader.innerHTML = `
+            <h3>Resultados para "${query}" (${results.length})</h3>
+            <button class="close-search">×</button>
+        `;
+        resultsContainer.appendChild(resultsHeader);
+
+        // Adiciona cada resultado
+        results.forEach((song, index) => {
+            const resultItem = document.createElement('div');
+            resultItem.className = 'search-result-item';
+            resultItem.innerHTML = `
+                <div class="result-image">
+                    <img src="${song.image}" alt="${song.title}">
+                    <div class="result-play-btn">▶</div>
+                </div>
+                <div class="result-info">
+                    <h4 class="result-title">${highlightMatch(song.title, query)}</h4>
+                    <p class="result-artist">${highlightMatch(song.artist, query)}</p>
+                    <p class="result-album">${highlightMatch(song.album, query)} • ${song.duration}</p>
+                </div>
+                <div class="result-genre">${song.genre}</div>
+            `;
+
+            // Adiciona evento de clique
+            resultItem.addEventListener('click', () => {
+                playSearchResult(song);
+                hideSearchResults();
+                searchInput.value = '';
+            });
+
+            resultsContainer.appendChild(resultItem);
+        });
+
+        // Adiciona evento para fechar
+        resultsContainer.querySelector('.close-search').addEventListener('click', () => {
+            hideSearchResults();
+        });
+
+        // Adiciona ao DOM
+        document.querySelector('.search-bar').appendChild(resultsContainer);
+    }
+
+    // Função para destacar termos correspondentes
+    function highlightMatch(text, query) {
+        const regex = new RegExp(`(${query})`, 'gi');
+        return text.replace(regex, '<mark>$1</mark>');
+    }
+
+    // Função para mostrar "nenhum resultado"
+    function showNoResults(query) {
+        const resultsContainer = document.createElement('div');
+        resultsContainer.className = 'search-results';
+        resultsContainer.innerHTML = `
+            <div class="search-results-header">
+                <h3>Nenhum resultado para "${query}"</h3>
+                <button class="close-search">×</button>
+            </div>
+            <div class="no-results">
+                <p>Tente buscar por:</p>
+                <ul>
+                    <li>Nome da música</li>
+                    <li>Nome do artista</li>
+                    <li>Nome do álbum</li>
+                    <li>Gênero musical</li>
+                </ul>
+            </div>
+        `;
+
+        resultsContainer.querySelector('.close-search').addEventListener('click', () => {
+            hideSearchResults();
+        });
+
+        document.querySelector('.search-bar').appendChild(resultsContainer);
+    }
+
+    // Função para esconder resultados da busca
+    function hideSearchResults() {
+        const resultsContainer = document.querySelector('.search-results');
+        if (resultsContainer) {
+            resultsContainer.remove();
+        }
+    }
+
+    // Função para atualizar seleção com teclado
+    function updateSelection(items, newIndex) {
+        items.forEach(item => item.classList.remove('selected'));
+        if (items[newIndex]) {
+            items[newIndex].classList.add('selected');
+            items[newIndex].scrollIntoView({ block: 'nearest' });
+        }
+    }
+
+    // Função para tocar resultado da busca
+    function playSearchResult(song) {
+        if (song.audio) {
+            playRealAudio(song.title, song.image, song.audio);
+        } else {
+            simulatePlayingTrack(song.title, song.image);
+        }
     }
 });
