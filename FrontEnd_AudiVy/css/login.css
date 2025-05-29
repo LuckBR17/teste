@@ -1,131 +1,270 @@
-body {
-    background-color: #21143A;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: white;
+/* Variáveis de cores inspiradas na página de assinatura */
+:root {
+    --primary: #7209b7;
+    --secondary: #3f37c9;
+    --accent: #f72585;
+    --background: #10002b;
+    --surface: #240046;
+    --text-primary: #ffffff;
+    --text-secondary: #b5b5ff;
+    --orange-accent: #FA973C;
+    --transition: 0.3s ease;
+}
+
+* {
     margin: 0;
     padding: 0;
-    height: 100vh;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(180deg, var(--primary) 0%, var(--background) 100%);
+    min-height: 100vh;
+    color: var(--text-primary);
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 20px;
 }
 
 .container {
-    background-color: #45228B;
+    background: var(--surface);
+    border: 2px solid rgba(114, 9, 183, 0.3);
+    border-radius: 20px;
     padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
     width: 100%;
-    max-width: 400px;
+    max-width: 450px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
 }
 
 .header {
     display: flex;
+    flex-direction: column;
     align-items: center;
     margin-bottom: 30px;
 }
 
 .logo {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .logo-image {
-    width: 50px;
-    height: auto;
-    margin-right: 12px;
+    width: 60px;
+    height: 60px;
+    background: var(--orange-accent);
+    border-radius: 50%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    transition: var(--transition);
+}
+
+.logo-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
 }
 
 h1 {
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 1.8rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, var(--orange-accent), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
     margin: 0;
 }
 
+.main-content {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 .main-content h2 {
-    margin-bottom: 20px;
-    font-weight: 600;
-    font-size: 24px;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--orange-accent), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .form {
     display: flex;
     flex-direction: column;
+    gap: 20px;
 }
 
 .form label {
-    margin-bottom: 8px;
     font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    font-size: 0.95rem;
 }
 
 .form input {
-    padding: 12px;
-    margin-bottom: 20px;
-    border-radius: 6px;
-    border: none;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
     font-size: 16px;
+    transition: var(--transition);
+    backdrop-filter: blur(5px);
+}
+
+.form input:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 0 3px rgba(247, 37, 133, 0.1);
+}
+
+.form input::placeholder {
+    color: var(--text-secondary);
 }
 
 .form-option {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    gap: 10px;
+    margin: 10px 0;
 }
 
-.form-option input {
-    margin-right: 8px;
+.form-option input[type="checkbox"] {
     appearance: none;
-    width: 16px;
-    height: 16px;
-    border: 1px solid #727272;
-    border-radius: 3px;
-    background-color: #121212;
-    position: relative;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--text-secondary);
+    border-radius: 4px;
+    background: transparent;
     cursor: pointer;
+    position: relative;
+    transition: var(--transition);
+    padding: 0;
 }
 
-.form-option input:checked::after {
-    content: "✓";
+.form-option input[type="checkbox"]:checked {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+.form-option input[type="checkbox"]:checked::after {
+    content: '✓';
     position: absolute;
     top: -2px;
-    left: 3px;
-    color: #1db954;
+    left: 2px;
+    color: white;
     font-size: 14px;
+    font-weight: bold;
 }
 
 .form-option label {
-    font-size: 14px;
+    font-size: 0.9rem;
     cursor: pointer;
+    user-select: none;
+    color: var(--text-secondary);
+    margin: 0;
 }
 
 .btn {
-    background-color: #FA973C;
-    color: black;
-    font-weight: bold;
-    padding: 14px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    color: var(--text-primary);
     border: none;
-    border-radius: 30px;
+    border-radius: 12px;
+    padding: 16px 24px;
+    font-size: 1.1rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: transform 0.2s ease;
+    transition: var(--transition);
+    box-shadow: 0 4px 16px rgba(114, 9, 183, 0.3);
+    margin-top: 10px;
 }
 
 .btn:hover {
-    transform: scale(1.05);
-    background-color: #e68a2e;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(114, 9, 183, 0.4);
 }
 
 .redirect-text {
-    margin-top: 20px;
+    margin-top: 25px;
     text-align: center;
-    font-size: 14px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
 }
 
 .redirect-text a {
-    color: #FA973C;
+    color: var(--orange-accent);
     text-decoration: none;
     font-weight: 600;
+    transition: var(--transition);
 }
 
 .redirect-text a:hover {
+    color: var(--accent);
     text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 25px;
+        margin: 10px;
+    }
+    
+    .main-content {
+        padding: 25px 20px;
+    }
+    
+    h1 {
+        font-size: 1.6rem;
+    }
+    
+    .main-content h2 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 25px 20px;
+    }
+    
+    .logo-image {
+        width: 50px;
+        height: 50px;
+    }
+    
+    h1 {
+        font-size: 1.4rem;
+    }
+    
+    .main-content h2 {
+        font-size: 1.2rem;
+    }
 }
