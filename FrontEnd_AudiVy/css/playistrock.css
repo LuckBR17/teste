@@ -82,9 +82,33 @@ body {
 }
 
 .song-title {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+.play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: white;
+    background-color: rgba(0,0,0,0.6);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.song-title:hover .play-overlay {
+    opacity: 1;
 }
 
 .song-title img {

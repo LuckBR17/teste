@@ -15,15 +15,13 @@
             <img src="../images/nirvana2.jpg" alt="Capa da playlist" />
         </div>
         <div class="playlist-info">
-            <h1>Hits do Momento</h1>
-            <p>Criada por você • Pública</p>
-            <p>45 músicas • 3h 12min • Última atualização: hoje</p>
+            <h1>Peso Certo</h1>
+            <p>As melhores do Rock • Pública</p>
             <div class="playlist-controls">
-                <button class="play-all-btn">▶ Reproduzir tudo</button>
                 <button class="shuffle-btn">🔀</button>
                 <button class="more-btn">...</button>
             </div>
-            <!-- Campo de busca removido conforme solicitado -->
+         
         </div>
     </div>
 
@@ -41,6 +39,7 @@
                 <td>1</td>
                 <td>
                     <div class="song-title">
+                        <div class="play-overlay">▶</div>
                         <img src="../images/nirvana2.jpg" alt="Smells Like Teen Spirit" />
                         <div>
                             <strong>Smells Like Teen Spirit</strong><br />
@@ -55,6 +54,7 @@
                 <td>2</td>
                 <td>
                     <div class="song-title">
+                        <div class="play-overlay">▶</div>
                         <img src="../images/sweetchild.jpeg" alt="Sweet Child O' Mine" />
                         <div>
                             <strong>Sweet Child O' Mine</strong><br />
@@ -63,12 +63,13 @@
                     </div>
                 </td>
                 <td>Appetite for Destruction</td>
-                <td>5:56</td>
+                <td>5:02</td>
             </tr>
             <tr data-src="../images/thunderstruckmusica.mp3" data-cover="../images/thunderstruck.webp" data-title="Thunderstruck" data-artist="AC/DC" data-album="The Razors Edge" data-duration="4:52">
                 <td>3</td>
                 <td>
                     <div class="song-title">
+                        <div class="play-overlay">▶</div>
                         <img src="../images/thunderstruck.webp" alt="Thunderstruck" />
                         <div>
                             <strong>Thunderstruck</strong><br />
@@ -77,12 +78,13 @@
                     </div>
                 </td>
                 <td>The Razors Edge</td>
-                <td>4:52</td>
+                <td>4:54</td>
             </tr>
             <tr data-src="../images/08 In The End.mp3" data-cover="../images/linkinpark.jpg" data-title="In The End" data-artist="Linkin Park" data-album="Hybrid Theory" data-duration="3:36">
                 <td>4</td>
                 <td>
                     <div class="song-title">
+                        <div class="play-overlay">▶</div>
                         <img src="../images/linkinpark.jpg" alt="In The End" />
                         <div>
                             <strong>In The End</strong><br />
@@ -110,6 +112,7 @@
             <button id="play-pause-btn">▶</button>
             <input type="range" id="progress-bar" value="0" min="0" max="100" />
             <span id="current-time">0:00</span> / <span id="duration">0:00</span>
+            <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1" title="Volume" />
         </div>
     </footer>
 

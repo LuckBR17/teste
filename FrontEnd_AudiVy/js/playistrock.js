@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const progressBar = document.getElementById('progress-bar');
     const currentTimeElem = document.getElementById('current-time');
     const durationElem = document.getElementById('duration');
+    const volumeSlider = document.getElementById('volume-slider');
 
     let isPlaying = false;
 
@@ -29,6 +30,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     songList.querySelectorAll('tr').forEach((tr) => {
         tr.addEventListener('click', () => {
+            playSong(tr);
+        });
+    });
+
+    // Remove previous row play button listeners (no longer needed)
+    
+    // Add event listeners to play overlay buttons
+    const playOverlays = document.querySelectorAll('.play-overlay');
+    playOverlays.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent triggering row click event
+            const tr = btn.closest('tr');
             playSong(tr);
         });
     });
@@ -59,6 +72,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const seekTime = (progressBar.value / 100) * audioPlayer.duration;
             audioPlayer.currentTime = seekTime;
         }
+    });
+
+    volumeSlider.addEventListener('input', () => {
+        audioPlayer.volume = volumeSlider.value;
     });
 
     function formatTime(seconds) {

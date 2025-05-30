@@ -20,85 +20,50 @@ const musicDatabase = [
         audio: "../images/getluckymusica.mp3",
         genre: "Electronic"
     },
+   
+
     {
         id: 3,
-        title: "Peso Certo",
+        title: "Smells Like Teen Spirit",
         artist: "Nirvana",
-        album: "Rock Collection",
-        duration: "3:45",
+        album: "Peso Certo",
+        duration: "5:01",
         image: "../images/nirvana2.jpg",
-        audio: null,
-        genre: "Rock"
+        audio: "../images/nirvanamusica.mp3",
+        genre: "Grunge"
     },
+
+
     {
         id: 4,
-        title: "Vibe Brasil",
-        artist: "Tim Maia",
-        album: "Soul Brasil",
-        duration: "4:12",
-        image: "../images/timmaia.png",
-        audio: null,
-        genre: "Soul"
+        title: "Sweet Child O' Mine",
+        artist: "Guns N' Roses",
+        album: "Peso Certo",
+        duration: "5:56",
+        image: "../images/sweetchild.jpeg",
+        audio: "../images/sweetchildmusica.mp3",
+        genre: "Rock"
     },
+
     {
         id: 5,
-        title: "No Limit",
-        artist: "G-Eazy",
-        album: "The Beautiful & Damned",
-        duration: "3:58",
-        image: "../images/modelz.jpeg",
-        audio: null,
-        genre: "Hip Hop"
+        title: "Thunderstruck",
+        artist: "AC/DC",
+        album: "Peso Certo",
+        duration: "4:52",
+        image: "../images/thunderstruck.webp",
+        audio: "../images/thunderstruckmusica.mp3",
+        genre: "Rock"
     },
     {
         id: 6,
-        title: "Bohemian Rhapsody",
-        artist: "Queen",
-        album: "A Night at the Opera",
-        duration: "5:55",
-        image: "../images/nirvana2.jpg",
-        audio: null,
+        title: "In The End",
+        artist: "Linkin Park",
+        album: "Peso Certo",
+        duration: "3:36",
+        image: "../images/linkinpark.jpg",
+        audio: "../images/08 In The End.mp3",
         genre: "Rock"
-    },
-    {
-        id: 7,
-        title: "Billie Jean",
-        artist: "Michael Jackson",
-        album: "Thriller",
-        duration: "4:54",
-        image: "../images/timmaia.png",
-        audio: null,
-        genre: "Pop"
-    },
-    {
-        id: 8,
-        title: "Smells Like Teen Spirit",
-        artist: "Nirvana",
-        album: "Nevermind",
-        duration: "5:01",
-        image: "../images/nirvana2.jpg",
-        audio: null,
-        genre: "Grunge"
-    },
-    {
-        id: 9,
-        title: "One More Time",
-        artist: "Daft Punk",
-        album: "Discovery",
-        duration: "5:20",
-        image: "../images/getlucky.jpg",
-        audio: null,
-        genre: "Electronic"
-    },
-    {
-        id: 10,
-        title: "Azul da Cor do Mar",
-        artist: "Tim Maia",
-        album: "Tim Maia 1970",
-        duration: "3:33",
-        image: "../images/timmaia.png",
-        audio: null,
-        genre: "Soul"
     }
 ];
 
