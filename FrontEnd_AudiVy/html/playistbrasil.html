@@ -3,45 +3,117 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Playlist Brasil</title>
+    <title>Playlist Brasil - Audivy</title>
     <link rel="stylesheet" href="../css/playistbrasil.css" />
 </head>
 <body>
-    <header>
-        <h1>Playlist Brasil</h1>
-        <a href="../html/inicio.html" class="back-link">Voltar</a>
-    </header>
-    <main>
-        <section class="playlist">
-            <ul id="song-list">
-                <!-- Placeholder songs -->
-                <li data-src="../images/song1.mp3" data-cover="../images/placeholder1.jpg">
-                    <img src="../images/placeholder1.jpg" alt="Capa da música 1" />
-                    <div class="song-info">
-                        <h3>Música 1</h3>
-                        <p>Artista 1</p>
-                    </div>
-                </li>
-                <li data-src="../images/song2.mp3" data-cover="../images/placeholder2.jpg">
-                    <img src="../images/placeholder2.jpg" alt="Capa da música 2" />
-                    <div class="song-info">
-                        <h3>Música 2</h3>
-                        <p>Artista 2</p>
-                    </div>
-                </li>
-            </ul>
-        </section>
-        <section class="player">
-            <img id="cover" src="../images/placeholder1.jpg" alt="Capa da música" />
-            <audio id="audio" controls>
-                Seu navegador não suporta o elemento de áudio.
-            </audio>
-            <div id="current-song-info">
-                <h3 id="current-title">Música 1</h3>
-                <p id="current-artist">Artista 1</p>
+    <a href="../html/inicio.html" style="position: fixed; top: 20px; left: 20px; z-index: 1100; background: #7209b7; color: white; padding: 10px 20px; border-radius: 30px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: background-color 0.3s ease;">
+        ← Voltar
+    </a>
+    <div class="playlist-header">
+        <div class="cover-image">
+            <img src="../images/timmaia.png" alt="Capa da playlist" />
+        </div>
+        <div class="playlist-info">
+            <h1>Vibe Brasil</h1>
+            <p>As melhores do Brasil • Pública</p>
+            <div class="playlist-controls">
+                <button class="more-btn">...</button>
             </div>
-        </section>
-    </main>
+        </div>
+    </div>
+
+    <table class="playlist-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Título</th>
+                <th>Álbum</th>
+                <th>Duração</th>
+            </tr>
+        </thead>
+        <tbody id="song-list">
+            <tr data-src="../images/reuconfessomusica.mp3" data-cover="../images/timmaia.png" data-title="Réu Confesso" data-artist="Tim Maia" data-album="Brasil Hits" data-duration="4:12">
+                <td>1</td>
+                <td>
+                    <div class="song-title">
+                        <div class="play-overlay">▶</div>
+                        <img src="../images/timmaia.png" alt="Réu Confesso" />
+                        <div>
+                            <strong>Réu Confesso</strong><br />
+                            <span>Tim Maia</span>
+                        </div>
+                    </div>
+                </td>
+                <td>Vibe Brasil</td>
+                <td>3:37</td>
+            </tr>
+            <tr data-src="../images/raçanegramusica.mp3" data-cover="../images/raçanegra.jpeg" data-title="Cheia de Manias" data-artist="Raça Negra" data-album="Brasil Hits" data-duration="4:05">
+                <td>2</td>
+                <td>
+                    <div class="song-title">
+                        <div class="play-overlay">▶</div>
+                        <img src="../images/raçanegra.jpeg" alt="Cheia de Manias" />
+                        <div>
+                            <strong>Cheia de Manias</strong><br />
+                            <span>Raça Negra</span>
+                        </div>
+                    </div>
+                </td>
+                <td>Vibe Brasil</td>
+                <td>3:29</td>
+            </tr>
+            <tr data-src="../images/apagueiparatodosmusica.mp3" data-cover="../images/apagueiparatodos.png" data-title="Apaguei Para Todos" data-artist="Ferrugem" data-album="Brasil Hits" data-duration="3:50">
+                <td>3</td>
+                <td>
+                    <div class="song-title">
+                        <div class="play-overlay">▶</div>
+                        <img src="../images/apagueiparatodos.png" alt="Apaguei Para Todos" />
+                        <div>
+                            <strong>Apaguei Para Todos</strong><br />
+                            <span>Ferrugem</span>
+                        </div>
+                    </div>
+                </td>
+                <td>Vibe Brasil</td>
+                <td>1:28</td>
+            </tr>
+            <tr data-src="../images/sonhodeamormusica.mp3" data-cover="../images/zezé.png" data-title="Sonho de Amor" data-artist="Zezé" data-album="Brasil Hits" data-duration="4:00">
+                <td>4</td>
+                <td>
+                    <div class="song-title">
+                        <div class="play-overlay">▶</div>
+                        <img src="../images/zezé.png" alt="Sonho de Amor" />
+                        <div>
+                            <strong>Sonho de Amor</strong><br />
+                            <span>Zezé</span>
+                        </div>
+                    </div>
+                </td>
+                <td>Vibe Brasil</td>
+                <td>3:15</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <audio id="audio-player"></audio>
+
+    <footer class="custom-player">
+        <div class="player-info">
+            <img id="player-cover" src="../images/timmaia.png" alt="Capa da música" />
+            <div class="player-text">
+                <h4 id="player-title">Título da Música</h4>
+                <p id="player-artist">Artista</p>
+            </div>
+        </div>
+        <div class="player-controls">
+            <button id="play-pause-btn">▶</button>
+            <input type="range" id="progress-bar" value="0" min="0" max="100" />
+            <span id="current-time">0:00</span> / <span id="duration">0:00</span>
+            <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1" title="Volume" />
+        </div>
+    </footer>
+
     <script src="../js/playistbrasil.js"></script>
 </body>
 </html>

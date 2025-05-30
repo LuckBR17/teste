@@ -1,35 +1,89 @@
 document.addEventListener('DOMContentLoaded', () => {
     const songList = document.getElementById('song-list');
-    const audio = document.getElementById('audio');
-    const cover = document.getElementById('cover');
-    const currentTitle = document.getElementById('current-title');
-    const currentArtist = document.getElementById('current-artist');
+    const audioPlayer = document.getElementById('audio-player');
+    const coverImage = document.getElementById('player-cover');
+    const titleText = document.getElementById('player-title');
+    const artistText = document.getElementById('player-artist');
+    const playPauseBtn = document.getElementById('play-pause-btn');
+    const progressBar = document.getElementById('progress-bar');
+    const currentTimeElem = document.getElementById('current-time');
+    const durationElem = document.getElementById('duration');
+    const volumeSlider = document.getElementById('volume-slider');
 
-    function playSong(li) {
-        const src = li.getAttribute('data-src');
-        const coverSrc = li.getAttribute('data-cover');
-        const title = li.querySelector('h3').textContent;
-        const artist = li.querySelector('p').textContent;
+    let isPlaying = false;
 
-        audio.src = src;
-        cover.src = coverSrc;
-        currentTitle.textContent = title;
-        currentArtist.textContent = artist;
-        audio.play();
+    function playSong(tr) {
+        const src = tr.getAttribute('data-src');
+        const cover = tr.getAttribute('data-cover');
+        const title = tr.getAttribute('data-title');
+        const artist = tr.getAttribute('data-artist');
+
+        audioPlayer.src = src;
+        audioPlayer.play();
+        isPlaying = true;
+        playPauseBtn.textContent = '⏸';
+
+        coverImage.src = cover;
+        titleText.textContent = title;
+        artistText.textContent = artist;
     }
 
-    songList.addEventListener('click', (e) => {
-        let li = e.target;
-        while (li && li.tagName !== 'LI') {
-            li = li.parentElement;
+    songList.querySelectorAll('tr').forEach((tr) => {
+        tr.addEventListener('click', () => {
+            playSong(tr);
+        });
+    });
+
+    // Add event listeners to play overlay buttons
+    const playOverlays = document.querySelectorAll('.play-overlay');
+    playOverlays.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent triggering row click event
+            const tr = btn.closest('tr');
+            playSong(tr);
+        });
+    });
+
+    playPauseBtn.addEventListener('click', () => {
+        if (isPlaying) {
+            audioPlayer.pause();
+            playPauseBtn.textContent = '▶';
+        } else {
+            audioPlayer.play();
+            playPauseBtn.textContent = '⏸';
         }
-        if (li) {
-            playSong(li);
+        isPlaying = !isPlaying;
+    });
+
+    audioPlayer.addEventListener('timeupdate', () => {
+        if (audioPlayer.duration) {
+            const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+            progressBar.value = progressPercent;
+
+            currentTimeElem.textContent = formatTime(audioPlayer.currentTime);
+            durationElem.textContent = formatTime(audioPlayer.duration);
         }
     });
 
+    progressBar.addEventListener('input', () => {
+        if (audioPlayer.duration) {
+            const seekTime = (progressBar.value / 100) * audioPlayer.duration;
+            audioPlayer.currentTime = seekTime;
+        }
+    });
+
+    volumeSlider.addEventListener('input', () => {
+        audioPlayer.volume = volumeSlider.value;
+    });
+
+    function formatTime(seconds) {
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+
     // Play first song by default
-    const firstSong = songList.querySelector('li');
+    const firstSong = songList.querySelector('tr');
     if (firstSong) {
         playSong(firstSong);
     }
