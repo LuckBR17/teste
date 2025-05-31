@@ -64,6 +64,94 @@ const musicDatabase = [
         image: "../images/linkinpark.jpg",
         audio: "../images/08 In The End.mp3",
         genre: "Rock"
+    },
+
+    {
+        id: 7,
+        title: "Réu Confesso",
+        artist: "Tim Maia",
+        album: "Vibe Brasil",
+        duration: "3:37",
+        image: "../images/timmaia.png",
+        audio: "../images/reuconfessomusica.mp3",
+        genre: "Soul"
+    },
+
+    {
+        id: 8,
+        title: "Cheia de Manias",
+        artist: "Raça Negra",
+        album: "Vibe Brasil",
+        duration: "3:29",
+        image: "../images/raçanegra.jpeg",
+        audio: "../images/raçanegramusica.mp3",
+        genre: "Pagode"
+    },
+
+    {
+        id: 9,
+        title: "Apaguei Para Todos",
+        artist: "Ferrugem",
+        album: "Vibe Brasil",
+        duration: "1:28",
+        image: "../images/apagueiparatodos.png",
+        audio: "../images/apagueiparatodosmusica.mp3",
+        genre: "Pagode"
+    },
+
+    {
+        id: 10,
+        title: "Sonho de Amor",
+        artist: "Zezé Di Camargo & Luciano",
+        album: "Vibe Brasil",
+        duration: "3:15",
+        image: "../images/zezé.png",
+        audio: "../images/sonhodeamormusica.mp3",
+        genre: "Sertanejo"
+    },
+
+    {
+        id: 11,
+        title: "No Role Modelz",
+        artist: "J.Cole",
+        album: "Hip Hop Vibes",
+        duration: "4:52",
+        image: "../images/modelz.jpeg",
+        audio: "../images/rolemodelzmusica.mp3",
+        genre: "Hip Hop"
+    },
+
+    {
+        id: 12,
+        title: "Lose Yourself",
+        artist: "Eminem",
+        album: "Hip Hop Vibes",
+        duration: "5:26",
+        image: "../images/eminem.jpg",
+        audio: "../images/eminemmusica.mp3",
+        genre: "Hip Hop"
+    },
+
+    {
+        id: 13,
+        title: "Ms. Jackson",
+        artist: "Outkast",
+        album: "Hip Hop Vibes",
+        duration: "4:05",
+        image: "../images/msjackson.jpg",
+        audio: "../images/msjacksonmusica.mp3",
+        genre: "Hip Hop"
+    },
+
+    {
+        id: 14,
+        title: "SICKO MODE",
+        artist: "Travis Scott",
+        album: "Hip Hop Vibes",
+        duration: "5:14",
+        image: "../images/travis.png",
+        audio: "../images/travismusica.mp3",
+        genre: "Hip Hop"
     }
 ];
 

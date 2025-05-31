@@ -3,45 +3,117 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Playlist Hip Hop</title>
+    <title>Playlist Hip Hop - Audivy</title>
     <link rel="stylesheet" href="../css/playistHiphop.css" />
 </head>
 <body>
-    <header>
-        <h1>Playlist Hip Hop</h1>
-        <a href="../html/inicio.html" class="back-link">Voltar</a>
-    </header>
-    <main>
-        <section class="playlist">
-            <ul id="song-list">
-                <!-- Placeholder songs -->
-                <li data-src="../images/song1.mp3" data-cover="../images/placeholder1.jpg">
-                    <img src="../images/placeholder1.jpg" alt="Capa da música 1" />
-                    <div class="song-info">
-                        <h3>Música 1</h3>
-                        <p>Artista 1</p>
-                    </div>
-                </li>
-                <li data-src="../images/song2.mp3" data-cover="../images/placeholder2.jpg">
-                    <img src="../images/placeholder2.jpg" alt="Capa da música 2" />
-                    <div class="song-info">
-                        <h3>Música 2</h3>
-                        <p>Artista 2</p>
-                    </div>
-                </li>
-            </ul>
-        </section>
-        <section class="player">
-            <img id="cover" src="../images/placeholder1.jpg" alt="Capa da música" />
-            <audio id="audio" controls>
-                Seu navegador não suporta o elemento de áudio.
-            </audio>
-            <div id="current-song-info">
-                <h3 id="current-title">Música 1</h3>
-                <p id="current-artist">Artista 1</p>
+    <a href="../html/inicio.html" style="position: fixed; top: 20px; left: 20px; z-index: 1100; background: #7209b7; color: white; padding: 10px 20px; border-radius: 30px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: background-color 0.3s ease;">
+        ← Voltar
+    </a>
+    <div class="playlist-header">
+        <div class="cover-image">
+            <img src="../images/modelz.jpeg" alt="Capa da playlist" />
+        </div>
+        <div class="playlist-info">
+            <h1>Hip Hop Vibes</h1>
+            <p>As melhores do Hip Hop • Pública</p>
+            <div class="playlist-controls">
+                <button class="more-btn">...</button>
             </div>
-        </section>
-    </main>
+        </div>
+    </div>
+
+    <table class="playlist-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Título</th>
+                <th>Álbum</th>
+                <th>Duração</th>
+            </tr>
+        </thead>
+        <tbody id="song-list">
+            <tr data-src="../images/rolemodelzmusica.mp3" data-cover="../images/modelz.jpeg" data-title="Role Modelz" data-artist="Modelz" data-album="Hip Hop Vibes" data-duration="3:45">
+                <td>1</td>
+                <td>
+                    <div class="song-title">
+                        <div class="play-overlay">▶</div>
+                        <img src="../images/modelz.jpeg" alt="Role Modelz" />
+                        <div>
+                            <strong>No Role Modelz</strong><br />
+                            <span>J.Cole</span>
+                        </div>
+                    </div>
+                </td>
+                <td>Hip Hop Vibes</td>
+                <td>4:52</td>
+            </tr>
+            <tr data-src="../images/01- Eminem - Lose YourSelf 'Rap' WB DivulgaçõeS.mp3" data-cover="../images/eminem.jpg" data-title="Lose Yourself" data-artist="Eminem" data-album="Hip Hop Vibes" data-duration="5:20">
+                <td>2</td>
+                <td>
+                    <div class="song-title">
+                        <div class="play-overlay">▶</div>
+                        <img src="../images/eminem.jpg" alt="Lose Yourself" />
+                        <div>
+                            <strong>Lose Yourself</strong><br />
+                            <span>Eminem</span>
+                        </div>
+                    </div>
+                </td>
+                <td>Hip Hop Vibes</td>
+                <td>5:26</td>
+            </tr>
+            <tr data-src="../images/msjacksonmusica.mp3" data-cover="../images/msjackson.jpg" data-title="Ms. Jackson" data-artist="Outkast" data-album="Hip Hop Vibes" data-duration="4:30">
+                <td>3</td>
+                <td>
+                    <div class="song-title">
+                        <div class="play-overlay">▶</div>
+                        <img src="../images/msjackson.jpg" alt="Ms. Jackson" />
+                        <div>
+                            <strong>Ms. Jackson</strong><br />
+                            <span>Outkast</span>
+                        </div>
+                    </div>
+                </td>
+                <td>Hip Hop Vibes</td>
+                <td>4:05</td>
+            </tr>
+            <tr data-src="../images/travismusica.mp3" data-cover="../images/travis.png" data-title="Travis" data-artist="Travis Scott" data-album="Hip Hop Vibes" data-duration="3:55">
+                <td>4</td>
+                <td>
+                    <div class="song-title">
+                        <div class="play-overlay">▶</div>
+                        <img src="../images/travis.png" alt="Travis" />
+                        <div>
+                            <strong>SICKO MODE</strong><br />
+                            <span>Travis Scott</span>
+                        </div>
+                    </div>
+                </td>
+                <td>Hip Hop Vibes</td>
+                <td>5:14</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <audio id="audio-player"></audio>
+
+    <footer class="custom-player">
+        <div class="player-info">
+            <img id="player-cover" src="../images/modelz.jpeg" alt="Capa da música" />
+            <div class="player-text">
+                <h4 id="player-title">Título da Música</h4>
+                <p id="player-artist">Artista</p>
+            </div>
+        </div>
+        <div class="player-controls">
+            <button id="play-pause-btn">▶</button>
+            <input type="range" id="progress-bar" value="0" min="0" max="100" />
+            <span id="current-time">0:00</span> / <span id="duration">0:00</span>
+            <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1" title="Volume" />
+        </div>
+    </footer>
+
     <script src="../js/playist.Hiphop.js"></script>
 </body>
 </html>
