@@ -12,7 +12,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Recuperar informações do plano selecionado do localStorage
     const selectedPlan = localStorage.getItem('selectedPlan') || 'Mensal';
-    const planPrice = selectedPlan === 'Mensal' ? '29,90' : '299,90';
+    let planPrice = '29,90';
+
+    if (selectedPlan === 'Mensal') {
+        planPrice = '29,90';
+    } else if (selectedPlan === 'Anual') {
+        planPrice = '299,90';
+    } else if (selectedPlan === 'Familiar') {
+        planPrice = '69,90';
+    }
     
     // Atualizar informações do plano na página
     document.getElementById('selected-plan').textContent = selectedPlan;

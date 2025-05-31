@@ -8,6 +8,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const subscribeBtn = card.querySelector('.subscribe-btn');
         const planTitle = card.querySelector('.plan-content h3').textContent;
         
+        // Map plan titles to keys
+        const planKeyMap = {
+            'Plano Mensal': 'Mensal',
+            'Plano Anual': 'Anual',
+            'Plano Familiar': 'Familiar'
+        };
+        const planKey = planKeyMap[planTitle] || 'Mensal';
+        
         // Habilita/desabilita o botão baseado no checkbox
         checkbox.addEventListener('change', function() {
             subscribeBtn.disabled = !this.checked;
@@ -26,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
         subscribeBtn.addEventListener('click', function() {
             if (!this.disabled) {
                 // Salva o plano selecionado no localStorage
-                localStorage.setItem('selectedPlan', planTitle);
+                localStorage.setItem('selectedPlan', planKey);
                 
                 // Redireciona para a página de pagamentos
                 window.location.href = 'pagamentos.html';
