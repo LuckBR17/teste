@@ -25,24 +25,11 @@ document.addEventListener('DOMContentLoaded', function() {
         // Funcionalidade do botão de assinatura
         subscribeBtn.addEventListener('click', function() {
             if (!this.disabled) {
-                // Animação de loading
-                const originalText = this.textContent;
-                this.textContent = 'Processando...';
-                this.disabled = true;
+                // Salva o plano selecionado no localStorage
+                localStorage.setItem('selectedPlan', planTitle);
                 
-                // Simula processamento
-                setTimeout(() => {
-                    // Mostra mensagem de sucesso
-                    showSuccessMessage(planTitle);
-                    
-                    // Restaura o botão após um tempo
-                    setTimeout(() => {
-                        this.textContent = originalText;
-                        this.disabled = false;
-                        checkbox.checked = false;
-                        this.style.opacity = '0.6';
-                    }, 2000);
-                }, 1500);
+                // Redireciona para a página de pagamentos
+                window.location.href = 'pagamentos.html';
             }
         });
     });

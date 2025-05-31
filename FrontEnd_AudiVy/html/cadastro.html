@@ -16,7 +16,7 @@
         </header>
         <main class="main-content">
             <h2>Crie sua conta</h2>
-            <form class="form">
+            <form class="form" id="registration-form">
                 <label for="username">Nome de usuário</label>
                 <input type="text" id="username" placeholder="Nome de usuário" />
                 <label for="email">E-mail</label>
@@ -25,8 +25,13 @@
                 <input type="password" id="password" placeholder="Senha" />
                 <label for="confirm-password">Confirme sua senha</label>
                 <input type="password" id="confirm-password" placeholder="Confirme sua senha" />
+                <div class="form-group">
+                    <input type="checkbox" id="is-artist" name="is-artist" />
+                    <label for="is-artist">Sou artista</label>
+                </div>
                 <button type="submit" class="btn">Cadastrar</button>
             </form>
+            <script src="../js/cadastro.js"></script>
             <p class="redirect-text">
                 Já tem uma conta? <a href="login.html">Entrar no Audivy</a>
             </p>

@@ -680,4 +680,54 @@ document.addEventListener('DOMContentLoaded', () => {
             simulatePlayingTrack(song.title, song.image);
         }
     }
+
+    // Subscription and ad display logic for non-subscribed users
+    const isSubscribed = localStorage.getItem('isSubscribed') === 'true';
+
+    if (!isSubscribed) {
+        // Show ad banner in corner
+        const adBanner = document.createElement('div');
+        adBanner.id = 'subscription-ad-banner';
+        adBanner.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #FA973C;
+            color: black;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            cursor: pointer;
+            z-index: 1000;
+            font-weight: bold;
+            max-width: 250px;
+            text-align: center;
+        `;
+        adBanner.textContent = '🎵 Assine para ouvir músicas ilimitadas! Clique aqui.';
+
+        adBanner.addEventListener('click', () => {
+            window.location.href = '../html/assinatura.html';
+        });
+
+        document.body.appendChild(adBanner);
+
+        // Show initial offer message in welcome section
+        const welcomeSection = document.querySelector('.welcome-section');
+        if (welcomeSection) {
+            const offerMessage = document.createElement('div');
+            offerMessage.id = 'subscription-offer-message';
+            offerMessage.style.cssText = `
+                background-color: #FFF3CD;
+                color: #856404;
+                padding: 10px 20px;
+                margin-top: 15px;
+                border: 1px solid #FFEeba;
+                border-radius: 5px;
+                text-align: center;
+            `;
+            offerMessage.innerHTML = '⚠️ Você está ouvindo como usuário gratuito. <strong>Assine para ter acesso ilimitado e sem anúncios!</strong>';
+
+            welcomeSection.appendChild(offerMessage);
+        }
+    }
 });

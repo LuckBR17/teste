@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento - Audivy</title>
+    <link rel="stylesheet" href="../css/pagamentos.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <img src="../images/logo.png" alt="Logo Audivy" class="logo-image">
+                <h1>Audivy</h1>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <h2>Finalizar Assinatura</h2>
+            
+            <div class="payment-summary">
+                <h3>Resumo do Plano</h3>
+                <div class="plan-details">
+                    <p class="plan-name">Plano <span id="selected-plan">Mensal</span></p>
+                    <p class="plan-price">R$ <span id="plan-price">29,90</span></p>
+                </div>
+            </div>
+
+            <div class="payment-methods">
+                <h3>Forma de Pagamento</h3>
+                <div class="payment-options">
+                    <button class="payment-option active" data-method="credit">
+                        <i class="card-icon">💳</i>
+                        Cartão de Crédito
+                    </button>
+                    <button class="payment-option" data-method="debit">
+                        <i class="card-icon">💳</i>
+                        Cartão de Débito
+                    </button>
+                    <button class="payment-option" data-method="pix">
+                        <i class="pix-icon">📱</i>
+                        PIX
+                    </button>
+                </div>
+
+                <form id="payment-form" class="payment-form">
+                    <div id="credit-debit-form">
+                        <div class="form-group">
+                            <label for="card-number">Número do Cartão</label>
+                            <input type="text" id="card-number" placeholder="0000 0000 0000 0000" maxlength="19">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expiry">Validade</label>
+                                <input type="text" id="expiry" placeholder="MM/AA" maxlength="5">
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" placeholder="123" maxlength="3">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="card-name">Nome no Cartão</label>
+                            <input type="text" id="card-name" placeholder="Nome como está no cartão">
+                        </div>
+
+                        <div id="installments-group" class="form-group">
+                            <label for="installments">Parcelas</label>
+                            <select id="installments">
+                                <option value="1">1x sem juros</option>
+                                <option value="2">2x sem juros</option>
+                                <option value="3">3x sem juros</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="pix-form" class="hidden">
+                        <div class="pix-info">
+                            <img src="../images/qr-code-placeholder.png" alt="QR Code PIX" class="pix-qr">
+                            <p class="pix-instructions">Escaneie o QR Code com seu aplicativo de pagamento</p>
+                            <button class="copy-pix-code">Copiar Código PIX</button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-button">Finalizar Pagamento</button>
+                </form>
+            </div>
+        </main>
+    </div>
+    <script src="../js/pagamentos.js"></script>
+</body>
+</html>
