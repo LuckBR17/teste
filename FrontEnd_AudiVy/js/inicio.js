@@ -823,4 +823,13 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
+
+    // Add click event to "Artistas" nav item to navigate to artista.html
+    const artistasNavItem = document.querySelector('.nav-section a.nav-item:nth-child(2)');
+    if (artistasNavItem) {
+        artistasNavItem.style.cursor = 'pointer';
+        artistasNavItem.addEventListener('click', () => {
+            window.location.href = '../html/artista.html';
+        });
+    }
 });
