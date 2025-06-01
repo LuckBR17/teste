@@ -25,6 +25,15 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
+        // Validação de formato de email se conter '@'
+        if (emailInput.value.includes('@')) {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(emailInput.value.trim())) {
+                showError(emailInput, 'Por favor, insira um email válido');
+                return;
+            }
+        }
+
         if (!passwordInput.value.trim()) {
             showError(passwordInput, 'Por favor, insira sua senha');
             return;
