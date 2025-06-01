@@ -17,5 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
             confirmPasswordInput.focus();
             return;
         }
+        // Save user data to localStorage on successful validation
+        const userData = {
+            username: usernameInput.value.trim(),
+            email: emailInput.value.trim(),
+            password: passwordInput.value.trim()
+        };
+        localStorage.setItem('userData', JSON.stringify(userData));
     });
 });
