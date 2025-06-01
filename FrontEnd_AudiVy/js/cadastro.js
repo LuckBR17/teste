@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             alert('As senhas não coincidem. Por favor, verifique e tente novamente.');
             confirmPasswordInput.focus();
+            return;
         }
     });
 });

@@ -1,4 +1,4 @@
-// Banco de dados simulado de músicas
+/* Arquivo inicio.js sem alterações para não interferir no funcionamento atual */
 const musicDatabase = [
     {
         id: 1,
@@ -174,6 +174,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentTrackImage = document.querySelector('.current-track-image');
     const currentTimeDisplay = document.querySelector('.current-time');
     const searchInput = document.querySelector('.search-bar input');
+
+    // Add click event to user-profile to navigate to perfil.html
+    const userProfile = document.querySelector('.user-profile');
+    if (userProfile) {
+        userProfile.style.cursor = 'pointer';
+        userProfile.addEventListener('click', () => {
+            window.location.href = '../html/perfil.html';
+        });
+    }
 
     let progressAnimationId; // ID da animação de progresso
     let searchResults = []; // Resultados da busca

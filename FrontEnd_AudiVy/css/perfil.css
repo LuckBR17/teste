@@ -1,0 +1,198 @@
+/* Atualizado para coerência com o estilo do site (inicio.css) */
+
+:root {
+    --primary: #7209b7;
+    --secondary: #3f37c9;
+    --accent: #f72585;
+    --background: #10002b;
+    --surface: #240046;
+    --text-primary: #ffffff;
+    --text-secondary: #b5b5ff;
+    --transition: 0.3s ease;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--background);
+    color: var(--text-primary);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.perfil-container {
+    background: var(--surface);
+    border-radius: 20px;
+    width: 420px;
+    padding: 30px 40px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.7);
+}
+
+.perfil-header {
+    background: linear-gradient(90deg, var(--accent), var(--primary));
+    padding: 20px;
+    border-radius: 20px 20px 0 0;
+    text-align: center;
+    color: var(--text-primary);
+    font-weight: 800;
+    font-size: 1.8rem;
+    box-shadow: inset 0 -4px 10px rgba(0,0,0,0.3);
+}
+
+.perfil-subtitle {
+    font-weight: 400;
+    font-size: 1rem;
+    margin-top: 6px;
+    color: var(--text-secondary);
+}
+
+.section {
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.4);
+}
+
+.section h3 {
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.section label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: none;
+    background: #3a3a6a;
+    color: var(--text-primary);
+    font-size: 15px;
+    margin-bottom: 18px;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    background-color: var(--secondary);
+    outline: none;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, var(--accent), var(--primary));
+    color: var(--text-primary);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(247, 37, 133, 0.7);
+    transition: background 0.3s ease, transform 0.2s ease;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transform: scale(1.05);
+}
+
+.section p {
+    font-size: 14px;
+    margin: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-secondary);
+}
+
+.section p strong {
+    color: var(--text-primary);
+}
+
+.benefits {
+    font-size: 13px;
+    margin-top: 10px;
+    color: var(--text-secondary);
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.benefits span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.btn-danger {
+    background: #e74c3c;
+    color: var(--text-primary);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.7);
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-danger:hover {
+    background: #c0392b;
+    transform: scale(1.05);
+}
+
+/* Ícones para as seções */
+.icon-account::before {
+    content: "👤";
+    font-size: 1.3rem;
+    margin-right: 8px;
+}
+
+.icon-access::before {
+    content: "📊";
+    font-size: 1.3rem;
+    margin-right: 8px;
+}
+
+.icon-subscription::before {
+    content: "💎";
+    font-size: 1.3rem;
+    margin-right: 8px;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .perfil-container {
+        width: 90%;
+        padding: 20px;
+    }
+}
+
+.btn-back {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 12px;
+    transition: color 0.3s ease;
+}
+
+.btn-back:hover {
+    color: var(--accent);
+}

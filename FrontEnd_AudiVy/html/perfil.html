@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Perfil do Usuário - Audivy</title>
+    <link rel="stylesheet" href="../css/perfil.css" />
+</head>
+<body>
+    <main class="perfil-container">
+        <header class="perfil-header">
+            <button id="back-button" class="btn-back" title="Voltar para Início">← Voltar</button>
+            <h1>🎵 Audivy</h1>
+            <p class="perfil-subtitle">Gerencie seu perfil e configurações</p>
+        </header>
+
+        <section class="section account-info">
+            <h3 class="icon-account">Informações da Conta</h3>
+            <label for="username">Nome de Usuário</label>
+            <input type="text" id="username" placeholder="Digite seu nome de usuário" />
+            <label for="new-password">Nova Senha</label>
+            <input type="password" id="new-password" placeholder="Digite sua nova senha" />
+            <label for="confirm-password">Confirmar Senha</label>
+            <input type="password" id="confirm-password" placeholder="Confirme sua nova senha" />
+            <button id="save-username-btn" class="btn-primary">💾 Salvar Alterações</button>
+        </section>
+
+        <section class="section access-info">
+            <h3 class="icon-access">Informações de Acesso</h3>
+            <p><span>Último Login</span> <strong>Hoje às 14:32</strong></p>
+            <p><span>Dispositivo</span> <strong>Chrome - Windows</strong></p>
+            <p><span>IP de Acesso</span> <strong>192.168.1.100</strong></p>
+        </section>
+
+        <section class="section subscription-info">
+            <h3 class="icon-subscription">Plano de Assinatura</h3>
+            <p><span>Plano Atual</span> <strong id="current-plan">Audivy Gratuito</strong></p>
+            <p><span>Próxima Cobrança</span> <strong>15 de Julho, 2025</strong></p>
+            <p><span>Valor Mensal</span> <strong>R$ 19,90</strong></p>
+            <p class="benefits">
+                Benefícios &nbsp; 🎵 Sem anúncios &nbsp; 📱 Download offline &nbsp; 🎧 Qualidade HD
+            </p>
+            <button id="cancel-plan-btn" class="btn-danger" disabled>❌ Cancelar Assinatura</button>
+        </section>
+
+        <div id="message-box" class="message" style="display:none;"></div>
+    </main>
+
+    <script src="../js/perfil.js"></script>
+</body>
+</html>
