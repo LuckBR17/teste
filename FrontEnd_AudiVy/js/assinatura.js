@@ -35,6 +35,16 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!this.disabled) {
                 // Salva o plano selecionado no localStorage
                 localStorage.setItem('selectedPlan', planKey);
+
+                // Mapeamento dos valores mensais para cada plano
+                const planValues = {
+                    'Mensal': 'R$ 29,90',
+                    'Anual': 'R$ 299,90',
+                    'Familiar': 'R$ 69,90'
+                };
+
+                // Salva o valor mensal correspondente no localStorage
+                localStorage.setItem('monthlyValue', planValues[planKey] || 'R$ 0,00');
                 
                 // Redireciona para a página de pagamentos
                 window.location.href = 'pagamentos.html';

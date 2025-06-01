@@ -266,6 +266,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentTrackInfo && currentTrackImage) {
             currentTrackInfo.textContent = trackName;
             currentTrackImage.src = imageSrc;
+            // Atualiza o nome do artista no player
+            const playerArtist = document.querySelector('.current-track-info p');
+            if (playerArtist) {
+                const track = musicDatabase.find(m => m.title === trackName);
+                playerArtist.textContent = track ? track.artist : 'Artista Desconhecido';
+            }
         }
         
         // Toca o áudio

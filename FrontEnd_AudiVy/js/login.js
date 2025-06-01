@@ -40,8 +40,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 password: passwordInput.value.trim()
             };
             localStorage.setItem('userData', JSON.stringify(userData));
+            // Salvar o nome de usuário/email também na chave 'username' para aparecer no perfil
+            localStorage.setItem('username', emailInput.value.trim());
         } else {
             localStorage.removeItem('userData');
+            localStorage.removeItem('username');
         }
 
         // Redirecionar para a página inicio.html imediatamente após clicar em Entrar

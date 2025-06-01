@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #FA973C 0%, #764ba2 100%);
     min-height: 100vh;
     color: #333;
 }
@@ -58,7 +58,7 @@ body {
 }
 
 .payment-summary {
-    background: #f8f9fa;
+    background: #fff5f0;
     border-radius: 15px;
     padding: 25px;
     margin-bottom: 30px;
@@ -123,9 +123,9 @@ body {
 }
 
 .payment-option.active {
-    border-color: #FA973C;
-    background: #fff5f0;
-    color: #FA973C;
+    border-color: #764ba2;
+    background: #e0d7f5;
+    color: #764ba2;
 }
 
 .card-icon, .pix-icon {
@@ -222,7 +222,7 @@ body {
 
 .submit-button {
     width: 100%;
-    background: linear-gradient(135deg, #FA973C, #e8863a);
+    background: linear-gradient(135deg, #764ba2, #667eea);
     color: white;
     border: none;
     padding: 18px;
@@ -236,7 +236,7 @@ body {
 
 .submit-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(249, 151, 60, 0.3);
+    box-shadow: 0 10px 25px rgba(118, 75, 162, 0.3);
 }
 
 .submit-button:active {

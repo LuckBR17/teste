@@ -14,11 +14,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const storedPassword = localStorage.getItem('password') || '';
         const isSubscribed = localStorage.getItem('isSubscribed') === 'true';
         const selectedPlan = localStorage.getItem('selectedPlan') || 'Nenhum';
+        const monthlyValue = localStorage.getItem('monthlyValue') || 'R$ 0,00';
 
         usernameInput.value = storedUsername;
         newPasswordInput.value = storedPassword;
         confirmPasswordInput.value = storedPassword;
         currentPlanSpan.textContent = isSubscribed ? selectedPlan : 'Nenhum plano ativo';
+
+        // Atualiza o valor mensal na página
+        const monthlyValueElement = document.getElementById('monthly-value');
+        if (monthlyValueElement) {
+            monthlyValueElement.textContent = isSubscribed ? monthlyValue : 'R$ 0,00';
+        }
 
         cancelPlanBtn.disabled = !isSubscribed;
     }
