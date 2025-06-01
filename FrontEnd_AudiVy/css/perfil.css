@@ -195,3 +195,9 @@ input[type="text"]:focus, input[type="password"]:focus {
 .btn-back:hover {
     color: var(--accent);
 }
+
+.logo-image {
+    height: 90px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
