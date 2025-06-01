@@ -28,24 +28,19 @@ let searchTerm = '';
 let songSearchTerm = '';
 
 const siteSongs = [
-    { id: 201, title: '08 In The End', artist: 'Unknown', duration: '4:00', album: '', file: '../images/08 In The End.mp3' },
-    { id: 202, title: 'Apaguei Para Todos', artist: 'Unknown', duration: '3:30', album: '', file: '../images/apagueiparatodosmusica.mp3' },
-    { id: 203, title: 'Eminem', artist: 'Eminem', duration: '5:00', album: '', file: '../images/eminemmusica.mp3' },
-    { id: 204, title: 'Get Lucky', artist: 'Daft Punk', duration: '4:00', album: '', file: '../images/getluckymusica.mp3' },
-    { id: 205, title: 'Linkin Park', artist: 'Linkin Park', duration: '4:30', album: '', file: '../images/linkinpark.jpg' },
-    { id: 206, title: 'Ms Jackson', artist: 'Outkast', duration: '3:50', album: '', file: '../images/msjacksonmusica.mp3' },
-    { id: 207, title: 'Nirvana', artist: 'Nirvana', duration: '5:00', album: '', file: '../images/nirvanamusica.mp3' },
-    { id: 208, title: 'Propaganda', artist: 'Unknown', duration: '3:20', album: '', file: '../images/propaganda.mp3' },
-    { id: 209, title: 'Raça Negra', artist: 'Raça Negra', duration: '4:10', album: '', file: '../images/raçanegramusica.mp3' },
-    { id: 210, title: 'Reu Confesso', artist: 'Unknown', duration: '3:40', album: '', file: '../images/reuconfessomusica.mp3' },
-    { id: 211, title: 'Role Modelz', artist: 'Unknown', duration: '3:30', album: '', file: '../images/rolemodelzmusica.mp3' },
-    { id: 212, title: 'Sonho de Amor', artist: 'Unknown', duration: '4:00', album: '', file: '../images/sonhodeamormusica.mp3' },
-    { id: 213, title: 'Sweet Child', artist: 'Guns N Roses', duration: '5:00', album: '', file: '../images/sweetchildmusica.mp3' },
-    { id: 214, title: 'Thunderstruck', artist: 'AC/DC', duration: '4:50', album: '', file: '../images/thunderstruckmusica.mp3' },
-    { id: 215, title: 'Tim Maia', artist: 'Tim Maia', duration: '4:20', album: '', file: '../images/timmaia.png' },
-    { id: 216, title: 'Too Sweet', artist: 'Unknown', duration: '3:30', album: '', file: '../images/toosweetmusica.mp3' },
-    { id: 217, title: 'Travis', artist: 'Unknown', duration: '3:40', album: '', file: '../images/travismusica.mp3' },
-    { id: 218, title: 'Zezé', artist: 'Unknown', duration: '3:50', album: '', file: '../images/zezé.png' }
+    { id: 201, title: 'Too Sweet', artist: 'Hozier', duration: '4:08', album: '', file: '../images/toosweetmusica.mp3' },
+    { id: 202, title: 'Apaguei Para Todos', artist: 'Ferrugem', duration: '1:28', album: '', file: '../images/apagueiparatodosmusica.mp3' },
+    { id: 203, title: 'Lose Yourself', artist: 'Eminem', duration: '5:26', album: '', file: '../images/eminemmusica.mp3' },
+    { id: 204, title: 'Get Lucky', artist: 'Daft Punk', duration: '4:07', album: '', file: '../images/getluckymusica.mp3' },
+    { id: 205, title: 'In The End', artist: 'Linkin Park', duration: '3:36', album: '', file: '../images/linkinpark.jpg' },
+    { id: 206, title: 'Ms. Jackson', artist: 'Outkast', duration: '4:05', album: '', file: '../images/msjacksonmusica.mp3' },
+    { id: 207, title: 'Smells Like Teen Spirit', artist: 'Nirvana', duration: '5:01', album: '', file: '../images/nirvanamusica.mp3' },
+    { id: 208, title: 'Cheia de Manias', artist: 'Raça Negra', duration: '3:29', album: '', file: '../images/raçanegramusica.mp3' },
+    { id: 209, title: 'Réu Confesso', artist: 'Tim Maia', duration: '3:37', album: '', file: '../images/reuconfessomusica.mp3' },
+    { id: 210, title: 'No Role Modelz', artist: 'J.Cole', duration: '4:52', album: '', file: '../images/rolemodelzmusica.mp3' },
+    { id: 211, title: 'Sonho de Amor', artist: 'Zezé Di Camargo & Luciano', duration: '3:15', album: '', file: '../images/sonhodeamormusica.mp3' },
+    { id: 212, title: 'Sweet Child O Mine', artist: 'Guns N Roses', duration: '5:02', album: '', file: '../images/sweetchildmusica.mp3' },
+    { id: 213, title: 'Thunderstruck', artist: 'AC/DC', duration: '4:54', album: '', file: '../images/thunderstruckmusica.mp3' },
 ];
 
 let availableSongs = siteSongs;
