@@ -174,6 +174,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentTrackImage = document.querySelector('.current-track-image');
     const currentTimeDisplay = document.querySelector('.current-time');
     const searchInput = document.querySelector('.search-bar input');
+    const playerFooter = document.querySelector('.player');
+
+    // Esconde o player inicialmente
+    if (playerFooter) {
+        playerFooter.style.display = 'none';
+    }
 
     // Add click event to user-profile to navigate to perfil.html
     const userProfile = document.querySelector('.user-profile');
@@ -262,6 +268,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // Define o arquivo de áudio
         audioPlayer.src = audioSrc;
         
+        // Mostra o player
+        const playerFooter = document.querySelector('.player');
+        if (playerFooter) {
+            playerFooter.style.display = 'grid';
+        }
+        
         // Atualiza a interface
         if (currentTrackInfo && currentTrackImage) {
             currentTrackInfo.textContent = trackName;
@@ -324,6 +336,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Função para simular a reprodução de uma música
     function simulatePlayingTrack(trackName, imageSrc) {
+        // Mostra o player
+        const playerFooter = document.querySelector('.player');
+        if (playerFooter) {
+            playerFooter.style.display = 'grid';
+        }
+        
         if (currentTrackInfo && currentTrackImage) {
             currentTrackInfo.textContent = trackName;
             currentTrackImage.src = imageSrc;
