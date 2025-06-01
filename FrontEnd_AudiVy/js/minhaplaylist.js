@@ -1,3 +1,18 @@
+function savePlaylistsToStorage() {
+    localStorage.setItem('playlists', JSON.stringify(playlists));
+}
+
+function loadPlaylistsFromStorage() {
+    const stored = localStorage.getItem('playlists');
+    if (stored) {
+        try {
+            playlists = JSON.parse(stored);
+        } catch (e) {
+            console.error('Erro ao carregar playlists do localStorage', e);
+        }
+    }
+}
+
 // Estado da aplicação
 let playlists = [
     {
@@ -70,8 +85,10 @@ const elements = {
     noSongsFound: document.getElementById('no-songs-found')
 };
 
-// Inicialização
 document.addEventListener('DOMContentLoaded', function() {
+    // Carregar playlists do localStorage
+    loadPlaylistsFromStorage();
+
     // Inicializar ícones do Lucide
     lucide.createIcons();
     
@@ -427,7 +444,6 @@ function renderSongs() {
     lucide.createIcons();
 }
 
-// Criar playlist
 function createPlaylist() {
     const name = elements.playlistNameInput.value.trim();
     if (!name) return;
@@ -441,6 +457,7 @@ function createPlaylist() {
     };
     
     playlists.push(newPlaylist);
+    savePlaylistsToStorage();
     renderPlaylists();
     hideCreateModal();
     
@@ -449,7 +466,6 @@ function createPlaylist() {
     elements.playlistDescInput.value = '';
 }
 
-// Deletar playlist
 function deletePlaylist(playlistId) {
     if (confirm('Tem certeza que deseja excluir esta playlist?')) {
         playlists = playlists.filter(p => p.id !== playlistId);
@@ -458,12 +474,12 @@ function deletePlaylist(playlistId) {
             selectedPlaylist = null;
         }
         
+        savePlaylistsToStorage();
         renderPlaylists();
         renderPlaylistDetail();
     }
 }
 
-// Remover música da playlist
 function removeSong(songId) {
     if (!selectedPlaylist) return;
     
@@ -475,11 +491,11 @@ function removeSong(songId) {
         playlists[playlistIndex] = selectedPlaylist;
     }
     
+    savePlaylistsToStorage();
     renderSongs();
     renderPlaylists();
 }
 
-// Adicionar música à playlist
 function addSongToPlaylist(song) {
     if (!selectedPlaylist || !song) return;
     
@@ -498,6 +514,7 @@ function addSongToPlaylist(song) {
         playlists[playlistIndex] = selectedPlaylist;
     }
     
+    savePlaylistsToStorage();
     renderSongs();
     renderPlaylists();
     renderAvailableSongs();
