@@ -5,9 +5,7 @@ let playlists = [
         name: 'Favoritas',
         description: 'Minhas músicas favoritas',
         songs: [
-            { id: 1, title: 'Bohemian Rhapsody', artist: 'Queen', duration: '5:55' },
-            { id: 2, title: 'Hotel California', artist: 'Eagles', duration: '6:30' },
-            { id: 3, title: 'Stairway to Heaven', artist: 'Led Zeppelin', duration: '8:02' }
+            
         ],
         image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300&h=300&fit=crop'
     },
@@ -16,8 +14,7 @@ let playlists = [
         name: 'Rock Clássico',
         description: 'Os maiores sucessos do rock',
         songs: [
-            { id: 4, title: 'Sweet Child O Mine', artist: 'Guns N Roses', duration: '5:03' },
-            { id: 5, title: 'Smoke on the Water', artist: 'Deep Purple', duration: '5:40' }
+            
         ],
         image: 'https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?w=300&h=300&fit=crop'
     }
@@ -230,6 +227,198 @@ function renderSongs() {
                 </button>
             </div>
         `;
+        
+        songElement.addEventListener('click', () => {
+            playSong(song.file);
+        });
+        
+        elements.songsList.appendChild(songElement);
+    });
+    
+    // Recriar ícones do Lucide
+    lucide.createIcons();
+}
+
+const audioPlayer = new Audio();
+
+const musicPlayer = document.getElementById('music-player');
+const playerSongTitle = document.getElementById('player-song-title');
+const playerPlayPauseBtn = document.getElementById('player-play-pause');
+const playPauseIcon = document.getElementById('play-pause-icon');
+const playerProgress = document.getElementById('player-progress');
+
+let currentSongFile = null;
+let isPlaying = false;
+
+function playSong(file, title = '') {
+    if (!file) return;
+    currentSongFile = file;
+    audioPlayer.src = file;
+    audioPlayer.play();
+    isPlaying = true;
+    updatePlayerUI(title);
+    updatePlayButtonIcons();
+    showPlayer();
+}
+
+function updatePlayerUI(title) {
+    playerSongTitle.textContent = title || 'Título da música';
+    playPauseIcon.setAttribute('data-lucide', 'pause');
+    lucide.createIcons();
+}
+
+function updatePlayButtonIcons() {
+    // Esta função foi removida conforme solicitado para desfazer a última alteração.
+}
+
+function togglePlayPause() {
+    if (!currentSongFile) return;
+    if (isPlaying) {
+        audioPlayer.pause();
+        isPlaying = false;
+    } else {
+        audioPlayer.play();
+        isPlaying = true;
+    }
+    updatePlayButtonIcons();
+}
+
+playerPlayPauseBtn.addEventListener('click', togglePlayPause);
+
+audioPlayer.addEventListener('timeupdate', () => {
+    if (audioPlayer.duration) {
+        const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+        playerProgress.value = progressPercent;
+    }
+});
+
+playerProgress.addEventListener('input', () => {
+    if (audioPlayer.duration) {
+        const seekTime = (playerProgress.value / 100) * audioPlayer.duration;
+        audioPlayer.currentTime = seekTime;
+    }
+});
+
+// Update renderSongs to pass song title to playSong and set initial play icon
+function renderSongs() {
+    if (!selectedPlaylist) return;
+    
+    if (selectedPlaylist.songs.length === 0) {
+        elements.songsList.innerHTML = '';
+        elements.emptyPlaylist.classList.remove('hidden');
+        return;
+    }
+    
+    elements.emptyPlaylist.classList.add('hidden');
+    elements.songsList.innerHTML = '';
+    
+    selectedPlaylist.songs.forEach((song, index) => {
+        const songElement = document.createElement('div');
+        songElement.className = 'song-item';
+        
+        songElement.innerHTML = `
+            <div class="song-info">
+                <span class="song-number">${index + 1}</span>
+                <div class="song-details">
+                    <h4>${song.title}</h4>
+                    <p>${song.artist}</p>
+                </div>
+            </div>
+            <div class="song-actions">
+                <span class="song-duration">${song.duration}</span>
+                <button class="song-btn">
+                    <i data-lucide="play"></i>
+                </button>
+                <button class="song-btn" onclick="removeSong(${song.id})">
+                    <i data-lucide="trash-2"></i>
+                </button>
+            </div>
+        `;
+        
+        songElement.addEventListener('click', () => {
+            playSong(song.file, song.title);
+        });
+        
+        elements.songsList.appendChild(songElement);
+    });
+    
+    // Recriar ícones do Lucide
+    lucide.createIcons();
+}
+
+function showPlayer() {
+    musicPlayer.classList.remove('hidden');
+}
+
+function togglePlayPause() {
+    if (!currentSongFile) return;
+    if (isPlaying) {
+        audioPlayer.pause();
+        isPlaying = false;
+        playPauseIcon.setAttribute('data-lucide', 'play');
+    } else {
+        audioPlayer.play();
+        isPlaying = true;
+        playPauseIcon.setAttribute('data-lucide', 'pause');
+    }
+    lucide.createIcons();
+}
+
+playerPlayPauseBtn.addEventListener('click', togglePlayPause);
+
+audioPlayer.addEventListener('timeupdate', () => {
+    if (audioPlayer.duration) {
+        const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+        playerProgress.value = progressPercent;
+    }
+});
+
+playerProgress.addEventListener('input', () => {
+    if (audioPlayer.duration) {
+        const seekTime = (playerProgress.value / 100) * audioPlayer.duration;
+        audioPlayer.currentTime = seekTime;
+    }
+});
+
+// Update renderSongs to pass song title to playSong
+function renderSongs() {
+    if (!selectedPlaylist) return;
+    
+    if (selectedPlaylist.songs.length === 0) {
+        elements.songsList.innerHTML = '';
+        elements.emptyPlaylist.classList.remove('hidden');
+        return;
+    }
+    
+    elements.emptyPlaylist.classList.add('hidden');
+    elements.songsList.innerHTML = '';
+    
+    selectedPlaylist.songs.forEach((song, index) => {
+        const songElement = document.createElement('div');
+        songElement.className = 'song-item';
+        
+        songElement.innerHTML = `
+            <div class="song-info">
+                <span class="song-number">${index + 1}</span>
+                <div class="song-details">
+                    <h4>${song.title}</h4>
+                    <p>${song.artist}</p>
+                </div>
+            </div>
+            <div class="song-actions">
+                <span class="song-duration">${song.duration}</span>
+                <button class="song-btn">
+                    <i data-lucide="heart"></i>
+                </button>
+                <button class="song-btn" onclick="removeSong(${song.id})">
+                    <i data-lucide="trash-2"></i>
+                </button>
+            </div>
+        `;
+        
+        songElement.addEventListener('click', () => {
+            playSong(song.file, song.title);
+        });
         
         elements.songsList.appendChild(songElement);
     });
