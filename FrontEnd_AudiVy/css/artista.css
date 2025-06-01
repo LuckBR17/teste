@@ -35,13 +35,14 @@ body {
 }
 
 .logo {
-    font-size: 3rem;
-    font-weight: bold;
     margin-bottom: 10px;
-    background: linear-gradient(90deg, var(--accent), var(--primary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+}
+
+.logo-image {
+    width: 150px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 .subtitle {
@@ -49,6 +50,23 @@ body {
     opacity: 0.9;
     margin-bottom: 30px;
     color: var(--text-secondary);
+}
+
+.inicio-button {
+    background-color: var(--primary);
+    color: var(--text-primary);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transition);
+    margin-top: 10px;
+}
+
+.inicio-button:hover {
+    background-color: var(--accent);
 }
 
 .form-card {
