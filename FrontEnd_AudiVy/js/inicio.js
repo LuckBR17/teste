@@ -157,9 +157,51 @@ const musicDatabase = [
 
 // Aguarda o carregamento completo do DOM
 document.addEventListener('DOMContentLoaded', () => {
+    // Carregar e exibir playlists do usuário
+    loadUserPlaylists();
+
     // Seleciona elementos principais
     const playButtons = document.querySelectorAll('.play-button');
     const audioPlayer = document.getElementById('audio-player');
+
+    // Função para carregar playlists do usuário
+    function loadUserPlaylists() {
+        const userPlaylistsContainer = document.getElementById('user-playlists-container');
+        const storedPlaylists = localStorage.getItem('playlists');
+        
+        if (storedPlaylists) {
+            try {
+                const playlists = JSON.parse(storedPlaylists);
+                
+                // Limpa o container
+                userPlaylistsContainer.innerHTML = '';
+                
+                // Adiciona cada playlist
+                playlists.forEach(playlist => {
+                    const playlistElement = document.createElement('div');
+                    playlistElement.className = 'playlist';
+                    playlistElement.innerHTML = `
+                        <div class="playlist-image">
+                            <img src="${playlist.image}" alt="${playlist.name}" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="playlist-info">
+                            <h4>${playlist.name}</h4>
+                            <p>${playlist.songs.length} músicas</p>
+                        </div>
+                    `;
+                    
+                    // Adiciona evento de clique para navegar para minhaplaylist.html
+                    playlistElement.addEventListener('click', () => {
+                        window.location.href = 'minhaplaylist.html';
+                    });
+                    
+                    userPlaylistsContainer.appendChild(playlistElement);
+                });
+            } catch (e) {
+                console.error('Erro ao carregar playlists:', e);
+            }
+        }
+    }
     const mainPlayButton = document.querySelector('.control-button.play');
     const navItems = document.querySelectorAll('.nav-item');
     const progressInner = document.querySelector('.progress-inner');
