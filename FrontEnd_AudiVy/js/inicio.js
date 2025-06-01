@@ -805,4 +805,22 @@ document.addEventListener('DOMContentLoaded', () => {
             welcomeSection.appendChild(offerMessage);
         }
     }
+
+    // Add skip forward and rewind 10 seconds functionality to control buttons
+    const controlButtons = document.querySelectorAll('.control-button');
+    controlButtons.forEach(button => {
+        if (button.textContent.trim() === '⟳') {
+            button.addEventListener('click', () => {
+                if (audioPlayer.src && audioPlayer.duration) {
+                    audioPlayer.currentTime = Math.min(audioPlayer.currentTime + 10, audioPlayer.duration);
+                }
+            });
+        } else if (button.textContent.trim() === '⟲') {
+            button.addEventListener('click', () => {
+                if (audioPlayer.src) {
+                    audioPlayer.currentTime = Math.max(audioPlayer.currentTime - 10, 0);
+                }
+            });
+        }
+    });
 });
