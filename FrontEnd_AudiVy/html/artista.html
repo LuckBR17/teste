@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audivy - Envie sua Música</title>
+    <link rel="stylesheet" href="../css/artista.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🎵 AUDIVY</div>
+            <div class="subtitle">Sua música merece ser ouvida pelo mundo</div>
+        </div>
+
+        <div class="form-card">
+            <h2 class="form-title">Envie sua Música</h2>
+            
+            <div class="guidelines">
+                <h3>📋 Diretrizes para Submissão</h3>
+                <ul>
+                    <li>Arquivos de áudio em alta qualidade (WAV, FLAC ou MP3 320kbps)</li>
+                    <li>Música deve ser original e de sua autoria</li>
+                    <li>Inclua informações completas sobre créditos e colaboradores</li>
+                    <li>Tempo de resposta: até 15 dias úteis</li>
+                    <li>Mantenha seus dados de contato atualizados</li>
+                </ul>
+            </div>
+
+            <form id="submissionForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="artistName">Nome Artístico *</label>
+                        <input type="text" id="artistName" name="artistName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="realName">Nome Real *</label>
+                        <input type="text" id="realName" name="realName" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="songTitle">Título da Música *</label>
+                    <input type="text" id="songTitle" name="songTitle" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="genre">Gênero Musical *</label>
+                        <select id="genre" name="genre" required>
+                            <option value="">Selecione um gênero</option>
+                            <option value="pop">Pop</option>
+                            <option value="rock">Rock</option>
+                            <option value="hip-hop">Hip Hop</option>
+                            <option value="eletronica">Eletrônica</option>
+                            <option value="reggae">Reggae</option>
+                            <option value="funk">Funk</option>
+                            <option value="sertanejo">Sertanejo</option>
+                            <option value="mpb">MPB</option>
+                            <option value="jazz">Jazz</option>
+                            <option value="blues">Blues</option>
+                            <option value="indie">Indie</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="duration">Duração (mm:ss)</label>
+                        <input type="text" id="duration" name="duration" placeholder="03:45">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Descrição da Música</label>
+                    <textarea id="description" name="description" placeholder="Conte-nos sobre sua música, inspiração, processo criativo..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="credits">Créditos (Compositores, Produtores, etc.)</label>
+                    <textarea id="credits" name="credits" placeholder="Lista todos os envolvidos na criação da música..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Redes Sociais</label>
+                    <div class="social-links">
+                        <input type="url" name="instagram" placeholder="Instagram (@usuário ou link completo)">
+                        <input type="url" name="youtube" placeholder="YouTube (canal ou link)">
+                        <input type="url" name="spotify" placeholder="Spotify (perfil do artista)">
+                        <input type="url" name="soundcloud" placeholder="SoundCloud (perfil)">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Upload da Música *</label>
+                    <div class="file-upload">
+                        <input type="file" id="audioFile" name="audioFile" accept=".mp3,.wav,.flac" required class="file-input">
+                        <label for="audioFile" class="file-label">
+                            <div>
+                                <div class="file-icon">🎵</div>
+                                <div><strong>Clique para selecionar o arquivo de áudio</strong></div>
+                                <div style="font-size: 14px; color: #666; margin-top: 5px;">
+                                    Formatos aceitos: MP3, WAV, FLAC (máx. 50MB)
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Capa da Música (Opcional)</label>
+                    <div class="file-upload">
+                        <input type="file" id="coverImage" name="coverImage" accept=".jpg,.jpeg,.png" class="file-input">
+                        <label for="coverImage" class="file-label">
+                            <div>
+                                <div class="file-icon">🖼️</div>
+                                <div><strong>Clique para selecionar a capa</strong></div>
+                                <div style="font-size: 14px; color: #666; margin-top: 5px;">
+                                    Formatos aceitos: JPG, PNG (mín. 1400x1400px)
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">🚀 Enviar Música para Análise</button>
+            </form>
+
+            <div class="success-message" id="successMessage">
+                <h3>✅ Música Enviada com Sucesso!</h3>
+                <p>Recebemos sua submissão e nossa equipe fará a análise em até 15 dias úteis. Você receberá um retorno por email.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/artista.js"></script>
+</body>
+</html>
