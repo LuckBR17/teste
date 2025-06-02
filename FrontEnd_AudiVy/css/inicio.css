@@ -10,6 +10,16 @@
     --transition: 0.3s ease;
 }
 
+body.light-mode {
+    --primary: #3f37c9;
+    --secondary: #7209b7;
+    --accent: #f72585;
+    --background: #ffffff;
+    --surface: #f0f0f0;
+    --text-primary: #000000;
+    --text-secondary: #555555;
+}
+
 
 * {
     margin: 0;

@@ -157,6 +157,28 @@ const musicDatabase = [
 document.addEventListener('DOMContentLoaded', () => {
     loadUserPlaylists();
 
+    // Dark mode toggle logic
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const body = document.body;
+
+    // Load saved mode from localStorage
+    const savedMode = localStorage.getItem('mode');
+    if (savedMode === 'light') {
+        body.classList.add('light-mode');
+        if (darkModeToggle) darkModeToggle.textContent = 'Modo Claro';
+    } else {
+        if (darkModeToggle) darkModeToggle.textContent = 'Modo Escuro';
+    }
+
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            const isLight = body.classList.contains('light-mode');
+            localStorage.setItem('mode', isLight ? 'light' : 'dark');
+            darkModeToggle.textContent = isLight ? 'Modo Claro' : 'Modo Escuro';
+        });
+    }
+
     const playButtons = document.querySelectorAll('.play-button');
     const audioPlayer = document.getElementById('audio-player');
 
