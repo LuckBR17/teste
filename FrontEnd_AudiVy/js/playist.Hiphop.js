@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Add event listeners to play overlay buttons
     const playOverlays = document.querySelectorAll('.play-overlay');
     playOverlays.forEach((btn) => {
         btn.addEventListener('click', (e) => {
@@ -82,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
     }
 
-    // Play first song by default
     const firstSong = songList.querySelector('tr');
     if (firstSong) {
         playSong(firstSong);

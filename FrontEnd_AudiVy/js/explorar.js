@@ -36,16 +36,13 @@ function init() {
     renderCategories();
     renderFeaturedMusic();
     setupSearch();
-    // Remove any previously stored song
     currentSong = null;
-    // Hide player on initial load
     const playerMini = document.getElementById('playerMini');
     if (playerMini) {
         playerMini.style.display = 'none';
     }
 }
 
-// Renderizar categorias
 function renderCategories() {
     const container = document.getElementById('categories');
     container.innerHTML = musicData.categories.map(category => 
@@ -53,7 +50,6 @@ function renderCategories() {
     ).join('');
 }
 
-// Renderizar música em destaque
 function renderFeaturedMusic() {
     const container = document.getElementById('featuredMusic');
     const filtered = filterMusic(musicData.featured);
@@ -72,7 +68,6 @@ function renderFeaturedMusic() {
     `).join('');
 }
 
-// Filtrar música por categoria
 function filterMusic(songs) {
     if (currentFilter === 'Tudo') return songs;
     return songs.filter(song => 
@@ -80,7 +75,6 @@ function filterMusic(songs) {
     );
 }
 
-// Filtrar por categoria
 function filterByCategory(category) {
     currentFilter = category;
     renderCategories();
@@ -129,7 +123,6 @@ let isShuffleOn = false;
 let isRepeatOn = false;
 let shuffledPlaylist = [];
 
-// Toggle play/pause with updated icon
 function togglePlayPause() {
     const audioPlayer = document.getElementById('audioPlayer');
     const playPauseIcon = document.getElementById('playPauseIcon');
@@ -147,14 +140,12 @@ function togglePlayPause() {
     updatePlaybackStatus();
 }
 
-// Format time in MM:SS
 function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = Math.floor(seconds % 60);
     return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
 }
 
-// Update time display and progress
 function updateTimeDisplay() {
     const audioPlayer = document.getElementById('audioPlayer');
     const currentTimeEl = document.getElementById('currentTime');
@@ -169,7 +160,6 @@ function updateTimeDisplay() {
     }
 }
 
-// Seek functionality
 function seek(event) {
     const audioPlayer = document.getElementById('audioPlayer');
     const progressBar = event.currentTarget;
@@ -182,7 +172,6 @@ function seek(event) {
     updateTimeDisplay();
 }
 
-// Toggle shuffle
 function toggleShuffle() {
     const shuffleBtn = document.getElementById('shuffleBtn');
     isShuffleOn = !isShuffleOn;
@@ -194,14 +183,12 @@ function toggleShuffle() {
     }
 }
 
-// Toggle repeat
 function toggleRepeat() {
     const repeatBtn = document.getElementById('repeatBtn');
     isRepeatOn = !isRepeatOn;
     repeatBtn.classList.toggle('active');
 }
 
-// Previous song with shuffle support
 function previousSong() {
     let allSongs = isShuffleOn ? shuffledPlaylist : [...musicData.featured, ...musicData.trending];
     let currentIndex = allSongs.findIndex(s => s.title === currentSong.title && s.artist === currentSong.artist);
@@ -213,7 +200,6 @@ function previousSong() {
     }
 }
 
-// Next song with shuffle and repeat support
 function nextSong() {
     let allSongs = isShuffleOn ? shuffledPlaylist : [...musicData.featured, ...musicData.trending];
     let currentIndex = allSongs.findIndex(s => s.title === currentSong.title && s.artist === currentSong.artist);
@@ -225,7 +211,6 @@ function nextSong() {
     }
 }
 
-// Initialize audio player event listeners
 function initializeAudioPlayer() {
     const audioPlayer = document.getElementById('audioPlayer');
     
@@ -241,7 +226,6 @@ function initializeAudioPlayer() {
     });
 }
 
-// Update playback status
 function updatePlaybackStatus() {
     const audioPlayer = document.getElementById('audioPlayer');
     if (!audioPlayer.paused) {
@@ -249,7 +233,6 @@ function updatePlaybackStatus() {
     }
 }
 
-// Configurar busca
 function setupSearch() {
     const searchInput = document.getElementById('searchInput');
     searchInput.addEventListener('input', (e) => {
@@ -258,7 +241,6 @@ function setupSearch() {
     });
 }
 
-// Buscar música
 function searchMusic(query) {
     if (!query) {
         renderFeaturedMusic();
@@ -271,7 +253,6 @@ function searchMusic(query) {
         song.artist.toLowerCase().includes(query)
     );
 
-    // Atualizar seções com resultados da busca
     const container = document.getElementById('featuredMusic');
     container.innerHTML = filtered.map(song => `
         <div class="music-card" onclick="playSong('${song.title}', '${song.artist}')">
@@ -287,7 +268,6 @@ function searchMusic(query) {
     `).join('');
 }
 
-// Animações de entrada
 function animateCards() {
     const cards = document.querySelectorAll('.music-card, .trending-item');
     cards.forEach((card, index) => {
@@ -301,7 +281,6 @@ function animateCards() {
     });
 }
 
-// Initialize when page loads
 document.addEventListener('DOMContentLoaded', () => {
     init();
     initializeAudioPlayer();

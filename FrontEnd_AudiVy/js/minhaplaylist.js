@@ -13,7 +13,6 @@ function loadPlaylistsFromStorage() {
     }
 }
 
-// Estado da aplicação
 let playlists = [
     {
         id: 1,
@@ -86,50 +85,38 @@ const elements = {
 };
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Carregar playlists do localStorage
     loadPlaylistsFromStorage();
 
-    // Inicializar ícones do Lucide
     lucide.createIcons();
     
-    // Renderizar playlists iniciais
     renderPlaylists();
     
-    // Event listeners
     setupEventListeners();
 });
 
-// Setup dos event listeners
 function setupEventListeners() {
-    // Busca de playlists
     elements.playlistSearch.addEventListener('input', (e) => {
         searchTerm = e.target.value;
         renderPlaylists();
     });
     
-    // Botões de criar playlist
     elements.createPlaylistBtn.addEventListener('click', () => showCreateModal());
     elements.createFirstPlaylist.addEventListener('click', () => showCreateModal());
     
-    // Modal de criar playlist
     elements.cancelCreate.addEventListener('click', () => hideCreateModal());
     elements.confirmCreate.addEventListener('click', () => createPlaylist());
     
-    // Botões de adicionar música
     elements.addSongBtn.addEventListener('click', () => showAddSongModal());
     elements.addFirstSong.addEventListener('click', () => showAddSongModal());
     
-    // Modal de adicionar música
     elements.closeAddSong.addEventListener('click', () => hideAddSongModal());
     elements.closeAddSongFooter.addEventListener('click', () => hideAddSongModal());
     
-    // Busca de músicas
     elements.songSearch.addEventListener('input', (e) => {
         songSearchTerm = e.target.value;
         renderAvailableSongs();
     });
     
-    // Fechar modal ao clicar fora
     elements.createModal.addEventListener('click', (e) => {
         if (e.target === elements.createModal) {
             hideCreateModal();
@@ -142,7 +129,6 @@ function setupEventListeners() {
         }
     });
     
-    // Enter para criar playlist
     elements.playlistNameInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
             createPlaylist();
@@ -178,18 +164,15 @@ function renderPlaylists() {
         elements.playlistsContainer.appendChild(playlistElement);
     });
     
-    // Recriar ícones do Lucide
     lucide.createIcons();
 }
 
-// Selecionar playlist
 function selectPlaylist(playlist) {
     selectedPlaylist = playlist;
     renderPlaylists();
     renderPlaylistDetail();
 }
 
-// Renderizar detalhes da playlist
 function renderPlaylistDetail() {
     if (!selectedPlaylist) {
         elements.noSelection.classList.remove('hidden');
@@ -209,7 +192,6 @@ function renderPlaylistDetail() {
     renderSongs();
 }
 
-// Renderizar músicas da playlist
 function renderSongs() {
     if (!selectedPlaylist) return;
     
@@ -252,7 +234,6 @@ function renderSongs() {
         elements.songsList.appendChild(songElement);
     });
     
-    // Recriar ícones do Lucide
     lucide.createIcons();
 }
 
@@ -316,7 +297,6 @@ playerProgress.addEventListener('input', () => {
     }
 });
 
-// Update renderSongs to pass song title to playSong and set initial play icon
 function renderSongs() {
     if (!selectedPlaylist) return;
     
@@ -397,7 +377,6 @@ playerProgress.addEventListener('input', () => {
     }
 });
 
-// Update renderSongs to pass song title to playSong
 function renderSongs() {
     if (!selectedPlaylist) return;
     
@@ -440,7 +419,6 @@ function renderSongs() {
         elements.songsList.appendChild(songElement);
     });
     
-    // Recriar ícones do Lucide
     lucide.createIcons();
 }
 
@@ -461,7 +439,6 @@ function createPlaylist() {
     renderPlaylists();
     hideCreateModal();
     
-    // Limpar formulário
     elements.playlistNameInput.value = '';
     elements.playlistDescInput.value = '';
 }
@@ -485,7 +462,6 @@ function removeSong(songId) {
     
     selectedPlaylist.songs = selectedPlaylist.songs.filter(song => song.id !== songId);
     
-    // Atualizar no array principal
     const playlistIndex = playlists.findIndex(p => p.id === selectedPlaylist.id);
     if (playlistIndex !== -1) {
         playlists[playlistIndex] = selectedPlaylist;
@@ -499,7 +475,6 @@ function removeSong(songId) {
 function addSongToPlaylist(song) {
     if (!selectedPlaylist || !song) return;
     
-    // Verificar se a música já está na playlist
     const songExists = selectedPlaylist.songs.some(s => s.id === song.id);
     if (songExists) {
         alert('Esta música já está na playlist!');
@@ -508,7 +483,6 @@ function addSongToPlaylist(song) {
     
     selectedPlaylist.songs.push(song);
     
-    // Atualizar no array principal
     const playlistIndex = playlists.findIndex(p => p.id === selectedPlaylist.id);
     if (playlistIndex !== -1) {
         playlists[playlistIndex] = selectedPlaylist;
@@ -519,13 +493,11 @@ function addSongToPlaylist(song) {
     renderPlaylists();
     renderAvailableSongs();
     
-    // Limpar busca e fechar modal
     songSearchTerm = '';
     elements.songSearch.value = '';
     hideAddSongModal();
 }
 
-// Renderizar músicas disponíveis
 function renderAvailableSongs() {
     const filteredSongs = availableSongs.filter(song =>
         song.title.toLowerCase().includes(songSearchTerm.toLowerCase()) ||
@@ -576,24 +548,20 @@ function renderAvailableSongs() {
         elements.availableSongs.appendChild(songElement);
     });
     
-    // Recriar ícones do Lucide
     lucide.createIcons();
 }
 
-// Mostrar modal de criar playlist
 function showCreateModal() {
     elements.createModal.classList.remove('hidden');
     elements.playlistNameInput.focus();
 }
 
-// Esconder modal de criar playlist
 function hideCreateModal() {
     elements.createModal.classList.add('hidden');
     elements.playlistNameInput.value = '';
     elements.playlistDescInput.value = '';
 }
 
-// Mostrar modal de adicionar música
 function showAddSongModal() {
     if (!selectedPlaylist) return;
     
@@ -604,7 +572,6 @@ function showAddSongModal() {
     elements.songSearch.focus();
 }
 
-// Esconder modal de adicionar música
 function hideAddSongModal() {
     elements.addSongModal.classList.add('hidden');
     songSearchTerm = '';

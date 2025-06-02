@@ -9,7 +9,6 @@
 </head>
 <body>
     <div id="app" class="min-h-screen bg-gradient">
-        <!-- Header -->
         <div class="header">
             <div class="container">
                 <div class="header-content">
@@ -46,15 +45,12 @@
 
         <div class="container main-content">
             <div class="grid-layout">
-                <!-- Playlists Sidebar -->
                 <div class="sidebar">
                     <h2 class="sidebar-title">Suas Playlists</h2>
                     <div id="playlists-container" class="playlists-list">
-                        <!-- Playlists serão inseridas aqui via JS -->
                     </div>
                 </div>
 
-                <!-- Main Content -->
                 <div class="main-panel">
                     <div id="no-selection" class="no-selection">
                         <i data-lucide="music" class="empty-icon"></i>
@@ -66,7 +62,6 @@
                     </div>
 
                     <div id="playlist-detail" class="playlist-detail hidden">
-                        <!-- Playlist Header -->
                         <div class="playlist-header">
                             <img id="playlist-image" src="" alt="" class="playlist-cover">
                             <div class="playlist-info">
@@ -107,7 +102,6 @@
             </div>
         </div>
 
-        <!-- Create Playlist Modal -->
         <div id="create-modal" class="modal hidden">
             <div class="modal-content">
                 <h2 class="modal-title">Nova Playlist</h2>
@@ -135,7 +129,6 @@
             </div>
         </div>
 
-        <!-- Add Song Modal -->
         <div id="add-song-modal" class="modal hidden">
             <div class="modal-content modal-large">
                 <div class="modal-header">
@@ -154,7 +147,6 @@
                 </div>
 
                 <div id="available-songs" class="available-songs">
-                    <!-- Músicas disponíveis serão inseridas aqui via JS -->
                 </div>
 
                 <div id="no-songs-found" class="no-results hidden">
@@ -170,7 +162,6 @@
         </div>
     </div>
 
-    <!-- Player de música -->
     <div id="music-player" class="music-player hidden">
         <div class="player-info">
             <span id="player-song-title" class="player-song-title">Título da música</span>
@@ -184,7 +175,6 @@
 
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
-        // Initialize Lucide icons
         window.onload = function() {
             lucide.createIcons();
         }

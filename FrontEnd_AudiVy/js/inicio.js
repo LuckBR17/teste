@@ -1,4 +1,3 @@
-/* Arquivo inicio.js sem alterações para não interferir no funcionamento atual */
 const musicDatabase = [
     {
         id: 1,
@@ -155,16 +154,12 @@ const musicDatabase = [
     }
 ];
 
-// Aguarda o carregamento completo do DOM
 document.addEventListener('DOMContentLoaded', () => {
-    // Carregar e exibir playlists do usuário
     loadUserPlaylists();
 
-    // Seleciona elementos principais
     const playButtons = document.querySelectorAll('.play-button');
     const audioPlayer = document.getElementById('audio-player');
 
-    // Função para carregar playlists do usuário
     function loadUserPlaylists() {
         const userPlaylistsContainer = document.getElementById('user-playlists-container');
         const storedPlaylists = localStorage.getItem('playlists');
@@ -173,10 +168,8 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 const playlists = JSON.parse(storedPlaylists);
                 
-                // Limpa o container
                 userPlaylistsContainer.innerHTML = '';
                 
-                // Adiciona cada playlist
                 playlists.forEach(playlist => {
                     const playlistElement = document.createElement('div');
                     playlistElement.className = 'playlist';
@@ -190,7 +183,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     `;
                     
-                    // Adiciona evento de clique para navegar para minhaplaylist.html
                     playlistElement.addEventListener('click', () => {
                         window.location.href = 'minhaplaylist.html';
                     });
@@ -218,12 +210,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.querySelector('.search-bar input');
     const playerFooter = document.querySelector('.player');
 
-    // Esconde o player inicialmente
     if (playerFooter) {
         playerFooter.style.display = 'none';
     }
 
-    // Add click event to user-profile to navigate to perfil.html
     const userProfile = document.querySelector('.user-profile');
     if (userProfile) {
         userProfile.style.cursor = 'pointer';
@@ -232,37 +222,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    let progressAnimationId; // ID da animação de progresso
-    let searchResults = []; // Resultados da busca
+    let progressAnimationId; 
+    let searchResults = []; 
 
-    // Inicializa o visualizador de ondas
     generateWaveVisualizer();
 
-    // Funcionalidade do menu mobile
     initializeMobileMenu();
 
-    // Inicializa o sistema de busca
     initializeSearch();
 
-    // Adiciona eventos aos botões de play
     playButtons.forEach(button => button.addEventListener('click', togglePlay));
 
-    // Controle principal de play/pause
     if (mainPlayButton) {
         mainPlayButton.addEventListener('click', togglePlay);
     }
 
-    // Controle do progresso da música
     if (progressContainer) {
         progressContainer.addEventListener('click', handleProgressClick);
     }
 
-    // Controle do volume
     if (volumeSlider) {
         volumeSlider.addEventListener('click', handleVolumeChange);
     }
 
-    // Controle dos itens de navegação
     navItems.forEach(item => {
         item.addEventListener('click', () => {
             navItems.forEach(navItem => navItem.classList.remove('active'));
@@ -270,12 +252,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Adiciona interação ao botão de like
     if (likeButton) {
         likeButton.addEventListener('click', toggleLike);
     }
 
-    // Adiciona interação com os cards de música
     musicCards.forEach(card => {
         card.addEventListener('click', () => {
             const trackName = card.querySelector('.card-title').textContent;
@@ -284,13 +264,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Adiciona interação com os itens da lista de músicas
     trackItems.forEach(track => {
         track.addEventListener('click', () => {
             const trackName = track.querySelector('.track-title').textContent;
             const imageSrc = track.querySelector('.track-image img').src;
             
-            // Verifica se é uma música com áudio real
             if (trackName === 'Too Sweet') {
                 playRealAudio(trackName, imageSrc, '../images/toosweetmusica.mp3');
             } else if (trackName === 'Get Lucky') {
@@ -301,26 +279,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Função para tocar áudio real de qualquer música
     function playRealAudio(trackName, imageSrc, audioSrc) {
-        // Para qualquer áudio que esteja tocando
         audioPlayer.pause();
         audioPlayer.currentTime = 0;
         
-        // Define o arquivo de áudio
         audioPlayer.src = audioSrc;
         
-        // Mostra o player
         const playerFooter = document.querySelector('.player');
         if (playerFooter) {
             playerFooter.style.display = 'grid';
         }
         
-        // Atualiza a interface
         if (currentTrackInfo && currentTrackImage) {
             currentTrackInfo.textContent = trackName;
             currentTrackImage.src = imageSrc;
-            // Atualiza o nome do artista no player
             const playerArtist = document.querySelector('.current-track-info p');
             if (playerArtist) {
                 const track = musicDatabase.find(m => m.title === trackName);
@@ -328,17 +300,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         
-        // Toca o áudio
         audioPlayer.play().then(() => {
             mainPlayButton.textContent = '❚❚';
             startRealAudioProgress();
         }).catch(error => {
             console.error('Erro ao reproduzir áudio:', error);
-            // Fallback para simulação se houver erro
             simulatePlayingTrack(trackName, imageSrc);
         });
         
-        // Adiciona eventos do áudio
         audioPlayer.onended = () => {
             mainPlayButton.textContent = '▶';
             stopProgressAnimation();
@@ -353,9 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
-    // Função para alternar entre play e pause
     function togglePlay() {
-        // Se há um áudio carregado (qualquer arquivo de áudio real)
         if (audioPlayer.src && (audioPlayer.src.includes('.mp3') || audioPlayer.src.includes('.wav') || audioPlayer.src.includes('.m4a'))) {
             if (audioPlayer.paused) {
                 audioPlayer.play();
@@ -365,7 +332,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 mainPlayButton.textContent = '▶';
             }
         } else {
-            // Comportamento original para simulação
             if (mainPlayButton.textContent === '▶') {
                 mainPlayButton.textContent = '❚❚';
                 startProgressAnimation();
@@ -376,9 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Função para simular a reprodução de uma música
     function simulatePlayingTrack(trackName, imageSrc) {
-        // Mostra o player
         const playerFooter = document.querySelector('.player');
         if (playerFooter) {
             playerFooter.style.display = 'grid';
@@ -393,7 +357,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Função para lidar com o clique no progresso
     function handleProgressClick(e) {
         const clickPosition = e.offsetX;
         const containerWidth = progressContainer.offsetWidth;
@@ -401,7 +364,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         progressInner.style.width = `${percentPosition}%`;
         
-        // Se estiver tocando áudio real, atualiza a posição
         if (audioPlayer.src && (audioPlayer.src.includes('.mp3') || audioPlayer.src.includes('.wav') || audioPlayer.src.includes('.m4a')) && audioPlayer.duration) {
             audioPlayer.currentTime = (percentPosition / 100) * audioPlayer.duration;
         } else {
@@ -409,7 +371,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Função para lidar com a mudança de volume
     function handleVolumeChange(e) {
         const clickPosition = e.offsetX;
         const sliderWidth = volumeSlider.offsetWidth;
@@ -417,19 +378,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         volumeLevel.style.width = `${volumePercentage}%`;
         
-        // Aplica o volume ao áudio real se estiver tocando
         if (audioPlayer.src) {
             audioPlayer.volume = volumePercentage / 100;
         }
     }
 
-    // Função para alternar o estado do botão de like
     function toggleLike() {
         likeButton.classList.toggle('active');
         likeButton.style.color = likeButton.classList.contains('active') ? '#f72585' : 'var(--text-secondary)';
     }
 
-    // Função para iniciar a animação da barra de progresso
     function startProgressAnimation() {
         stopProgressAnimation(); // Cancela qualquer animação anterior
 
@@ -454,7 +412,6 @@ document.addEventListener('DOMContentLoaded', () => {
         progressAnimationId = requestAnimationFrame(animate);
     }
 
-    // Função para parar a animação da barra de progresso
     function stopProgressAnimation() {
         if (progressAnimationId) {
             cancelAnimationFrame(progressAnimationId);
@@ -462,12 +419,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Função para iniciar o progresso do áudio real
     function startRealAudioProgress() {
-        stopProgressAnimation(); // Para qualquer animação simulada
+        stopProgressAnimation(); 
     }
 
-    // Função para atualizar o display de tempo do áudio real
     function updateRealTimeDisplay() {
         if (audioPlayer.currentTime && audioPlayer.duration) {
             const currentTime = Math.floor(audioPlayer.currentTime);
@@ -489,7 +444,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Função para atualizar o display de tempo (simulação)
     function updateTimeDisplay(progressPercentage) {
         const totalTime = 210; // 3:30 em segundos
         const currentTime = Math.floor((progressPercentage / 100) * totalTime);
@@ -502,11 +456,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Função para gerar o visualizador de ondas
+    // Função para gerar as ondas
     function generateWaveVisualizer() {
         if (!waveVisualizer) return;
 
-        waveVisualizer.innerHTML = ''; // Limpa o conteúdo anterior
+        waveVisualizer.innerHTML = ''; 
         for (let i = 0; i < 20; i++) {
             const waveBar = document.createElement('div');
             waveBar.classList.add('wave-bar');
@@ -515,7 +469,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Função para inicializar o menu mobile
     function initializeMobileMenu() {
         const menuToggle = document.querySelector('.menu-toggle');
         const sidebar = document.querySelector('.sidebar');
@@ -523,21 +476,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!menuToggle || !sidebar || !sidebarOverlay) return;
 
-        // Abre/fecha o menu
         menuToggle.addEventListener('click', () => {
             sidebar.classList.toggle('open');
             sidebarOverlay.classList.toggle('active');
             document.body.style.overflow = sidebar.classList.contains('open') ? 'hidden' : 'auto';
         });
 
-        // Fecha o menu ao clicar no overlay
         sidebarOverlay.addEventListener('click', () => {
             sidebar.classList.remove('open');
             sidebarOverlay.classList.remove('active');
             document.body.style.overflow = 'auto';
         });
 
-        // Fecha o menu ao redimensionar para desktop
         window.addEventListener('resize', () => {
             if (window.innerWidth > 768) {
                 sidebar.classList.remove('open');
@@ -546,7 +496,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Fecha o menu ao clicar em um item de navegação (mobile)
         const navItems = sidebar.querySelectorAll('.nav-item, .playlist');
         navItems.forEach(item => {
             item.addEventListener('click', () => {
@@ -559,13 +508,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Função para inicializar o sistema de busca
     function initializeSearch() {
         if (!searchInput) return;
 
         let searchTimeout;
         
-        // Evento de input para busca em tempo real
         searchInput.addEventListener('input', function() {
             clearTimeout(searchTimeout);
             const query = this.value.trim();
@@ -575,20 +522,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             
-            // Debounce para evitar muitas buscas
             searchTimeout = setTimeout(() => {
                 performSearch(query);
             }, 300);
         });
 
-        // Evento para fechar resultados ao clicar fora
         document.addEventListener('click', function(e) {
             if (!e.target.closest('.search-bar') && !e.target.closest('.search-results')) {
                 hideSearchResults();
             }
         });
 
-        // Evento para navegação com teclado
         searchInput.addEventListener('keydown', function(e) {
             const resultsContainer = document.querySelector('.search-results');
             if (!resultsContainer) return;
@@ -621,7 +565,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Função para realizar a busca
     function performSearch(query) {
         const results = musicDatabase.filter(song => {
             const searchTerm = query.toLowerCase();
@@ -635,9 +578,7 @@ document.addEventListener('DOMContentLoaded', () => {
         displaySearchResults(results, query);
     }
 
-    // Função para exibir os resultados da busca
     function displaySearchResults(results, query) {
-        // Remove container de resultados anterior se existir
         const existingResults = document.querySelector('.search-results');
         if (existingResults) {
             existingResults.remove();
@@ -652,7 +593,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const resultsContainer = document.createElement('div');
         resultsContainer.className = 'search-results';
         
-        // Adiciona título dos resultados
         const resultsHeader = document.createElement('div');
         resultsHeader.className = 'search-results-header';
         resultsHeader.innerHTML = `
@@ -661,7 +601,6 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         resultsContainer.appendChild(resultsHeader);
 
-        // Adiciona cada resultado
         results.forEach((song, index) => {
             const resultItem = document.createElement('div');
             resultItem.className = 'search-result-item';
@@ -678,7 +617,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="result-genre">${song.genre}</div>
             `;
 
-            // Adiciona evento de clique
             resultItem.addEventListener('click', () => {
                 playSearchResult(song);
                 hideSearchResults();
@@ -688,22 +626,18 @@ document.addEventListener('DOMContentLoaded', () => {
             resultsContainer.appendChild(resultItem);
         });
 
-        // Adiciona evento para fechar
         resultsContainer.querySelector('.close-search').addEventListener('click', () => {
             hideSearchResults();
         });
 
-        // Adiciona ao DOM
         document.querySelector('.search-bar').appendChild(resultsContainer);
     }
 
-    // Função para destacar termos correspondentes
     function highlightMatch(text, query) {
         const regex = new RegExp(`(${query})`, 'gi');
         return text.replace(regex, '<mark>$1</mark>');
     }
 
-    // Função para mostrar "nenhum resultado"
     function showNoResults(query) {
         const resultsContainer = document.createElement('div');
         resultsContainer.className = 'search-results';
@@ -730,7 +664,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.search-bar').appendChild(resultsContainer);
     }
 
-    // Função para esconder resultados da busca
     function hideSearchResults() {
         const resultsContainer = document.querySelector('.search-results');
         if (resultsContainer) {
@@ -738,7 +671,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Função para atualizar seleção com teclado
     function updateSelection(items, newIndex) {
         items.forEach(item => item.classList.remove('selected'));
         if (items[newIndex]) {
@@ -747,7 +679,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Função para tocar resultado da busca
     function playSearchResult(song) {
         if (song.audio) {
             playRealAudio(song.title, song.image, song.audio);
@@ -756,11 +687,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Subscription and ad display logic for non-subscribed users
     const isSubscribed = localStorage.getItem('isSubscribed') === 'true';
 
     if (!isSubscribed) {
-        // Show ad banner in corner
         const adBanner = document.createElement('div');
         adBanner.id = 'subscription-ad-banner';
         adBanner.style.cssText = `
@@ -786,7 +715,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.body.appendChild(adBanner);
 
-        // Show initial offer message in welcome section
         const welcomeSection = document.querySelector('.welcome-section');
         if (welcomeSection) {
             const offerMessage = document.createElement('div');
@@ -806,7 +734,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Add skip forward and rewind 10 seconds functionality to control buttons
     const controlButtons = document.querySelectorAll('.control-button');
     controlButtons.forEach(button => {
         if (button.textContent.trim() === '⟳') {
@@ -824,7 +751,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Add click event to "Artistas" nav item to navigate to artista.html
     const artistasNavItem = document.querySelector('.nav-section a.nav-item:nth-child(2)');
     if (artistasNavItem) {
         artistasNavItem.style.cursor = 'pointer';

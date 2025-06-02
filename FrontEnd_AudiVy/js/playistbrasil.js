@@ -82,7 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
     }
 
-    // Play first song by default
     const firstSong = songList.querySelector('tr');
     if (firstSong) {
         playSong(firstSong);

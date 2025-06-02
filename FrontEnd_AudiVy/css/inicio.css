@@ -338,7 +338,6 @@ body {
     white-space: nowrap;
 }
 
-/* Destaque dos termos de busca */
 .search-results mark {
     background: var(--accent);
     color: white;
@@ -346,7 +345,6 @@ body {
     border-radius: 2px;
 }
 
-/* Estilo para "nenhum resultado" */
 .no-results {
     padding: 20px;
     text-align: center;
@@ -778,7 +776,6 @@ body {
     border-radius: 2px;
 }
 
-/* Responsividade */
 @media (max-width: 1200px) {
     .search-bar {
         width: 250px;
@@ -1142,7 +1139,6 @@ body {
     }
 }
 
-/* Menu hamburguer para mobile */
 @media (max-width: 768px) {
     .mobile-header {
         display: flex;
@@ -1182,7 +1178,6 @@ body {
     }
 }
 
-/* Overlay para mobile quando sidebar está aberta */
 .sidebar-overlay {
     display: none;
     position: fixed;

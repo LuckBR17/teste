@@ -449,7 +449,6 @@ body {
     opacity: 0.2;
 }
 
-/* Volume container improvements */
 .volume-container {
     display: flex;
     align-items: center;
@@ -563,7 +562,6 @@ body {
     }
 }
 
-/* Back button style restored */
 .back-button {
     background-color: #1db954;
     border: none;

@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
         cancelPlanBtn.disabled = !isSubscribed;
     }
 
-    // Salvar nome de usuário e senha
     saveUsernameBtn.addEventListener('click', () => {
         const newUsername = usernameInput.value.trim();
         const newPassword = newPasswordInput.value;
@@ -54,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
         showMessage('Informações salvas com sucesso!', 'success');
     });
 
-    // Cancelar assinatura
     cancelPlanBtn.addEventListener('click', () => {
         if (confirm('Tem certeza que deseja cancelar sua assinatura?')) {
             localStorage.removeItem('isSubscribed');
@@ -65,14 +63,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Botão voltar para a página inicio.html
     if (backButton) {
         backButton.addEventListener('click', () => {
             window.location.href = '../html/inicio.html';
         });
     }
 
-    // Mostrar mensagens para o usuário
     function showMessage(text, type) {
         messageBox.textContent = text;
         messageBox.className = type === 'error' ? 'message error' : 'message success';

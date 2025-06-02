@@ -1,6 +1,4 @@
-// Funcionalidade para os planos de assinatura
 document.addEventListener('DOMContentLoaded', function() {
-    // Seleciona todos os cards de planos
     const planCards = document.querySelectorAll('.plan-card');
     
     planCards.forEach(card => {
@@ -8,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const subscribeBtn = card.querySelector('.subscribe-btn');
         const planTitle = card.querySelector('.plan-content h3').textContent;
         
-        // Map plan titles to keys
         const planKeyMap = {
             'Plano Mensal': 'Mensal',
             'Plano Anual': 'Anual',
@@ -16,11 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         const planKey = planKeyMap[planTitle] || 'Mensal';
         
-        // Habilita/desabilita o botão baseado no checkbox
         checkbox.addEventListener('change', function() {
             subscribeBtn.disabled = !this.checked;
             
-            // Adiciona feedback visual
             if (this.checked) {
                 subscribeBtn.style.opacity = '1';
                 subscribeBtn.style.cursor = 'pointer';
@@ -30,13 +25,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Funcionalidade do botão de assinatura
         subscribeBtn.addEventListener('click', function() {
             if (!this.disabled) {
                 // Salva o plano selecionado no localStorage
                 localStorage.setItem('selectedPlan', planKey);
 
-                // Mapeamento dos valores mensais para cada plano
                 const planValues = {
                     'Mensal': 'R$ 29,90',
                     'Anual': 'R$ 299,90',
@@ -46,17 +39,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Salva o valor mensal correspondente no localStorage
                 localStorage.setItem('monthlyValue', planValues[planKey] || 'R$ 0,00');
                 
-                // Redireciona para a página de pagamentos
                 window.location.href = 'pagamentos.html';
             }
         });
     });
     
-    // Funcionalidade do botão voltar
     const backButtons = document.querySelectorAll('.back-btn');
     backButtons.forEach(btn => {
         btn.addEventListener('click', function() {
-            // Adiciona animação antes de voltar
             document.body.style.opacity = '0.8';
             setTimeout(() => {
                 history.back();
@@ -64,7 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Adiciona efeitos de hover nos cards
     planCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-8px) scale(1.02)';
@@ -76,7 +65,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Função para mostrar mensagem de sucesso
 function showSuccessMessage(planName) {
     // Cria elemento de notificação
     const notification = document.createElement('div');
@@ -91,7 +79,6 @@ function showSuccessMessage(planName) {
         </div>
     `;
     
-    // Adiciona estilos inline para a notificação
     notification.style.cssText = `
         position: fixed;
         top: 20px;
@@ -106,7 +93,6 @@ function showSuccessMessage(planName) {
         max-width: 300px;
     `;
     
-    // Adiciona animação CSS
     const style = document.createElement('style');
     style.textContent = `
         @keyframes slideIn {
@@ -172,7 +158,6 @@ function showSuccessMessage(planName) {
     }, 4000);
 }
 
-// Adiciona efeito de parallax suave no scroll
 window.addEventListener('scroll', function() {
     const scrolled = window.pageYOffset;
     const logoContainer = document.querySelector('.logo-container');
@@ -182,12 +167,10 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Adiciona animações de entrada quando a página carrega
 window.addEventListener('load', function() {
     const cards = document.querySelectorAll('.plan-card');
     const logo = document.querySelector('.logo-container');
     
-    // Anima o logo
     if (logo) {
         logo.style.opacity = '0';
         logo.style.transform = 'translateY(-30px)';
@@ -199,7 +182,6 @@ window.addEventListener('load', function() {
         }, 100);
     }
     
-    // Anima os cards com delay
     cards.forEach((card, index) => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(30px)';

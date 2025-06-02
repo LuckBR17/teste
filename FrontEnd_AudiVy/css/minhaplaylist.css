@@ -1,4 +1,3 @@
-/* Reset e Base */
 * {
     margin: 0;
     padding: 0;
@@ -11,7 +10,6 @@ body {
     color: white;
 }
 
-/* Layout */
 .bg-gradient {
     background: linear-gradient(135deg, #581c87 0%, #1e3a8a 50%, #312e81 100%);
     min-height: 100vh;
@@ -206,7 +204,6 @@ body {
     color: white;
 }
 
-/* Sidebar */
 .sidebar {
     padding: 1rem;
     background: rgba(255, 255, 255, 0.05);
@@ -282,7 +279,6 @@ body {
     color: #6b7280;
 }
 
-/* Delete button */
 .delete-btn {
     background: transparent;
     border: none;
@@ -331,7 +327,6 @@ body {
     margin-bottom: 2rem;
 }
 
-/* Playlist Detail */
 .playlist-header {
     background: linear-gradient(45deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2));
     border-radius: 1rem;
@@ -374,7 +369,6 @@ body {
     color: #9ca3af;
 }
 
-/* Songs Container */
 .songs-container {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 1rem;
@@ -589,7 +583,6 @@ body {
     justify-content: flex-end;
 }
 
-/* Available Songs */
 .available-songs {
     flex: 1;
     overflow-y: auto;
@@ -714,12 +707,10 @@ body {
     padding: 3rem;
 }
 
-/* Utility Classes */
 .hidden {
     display: none !important;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .header-content {
         flex-direction: column;
@@ -765,7 +756,6 @@ body {
     }
 }
 
-/* Player de música */
 #music-player {
     position: fixed;
     bottom: 1.5rem;

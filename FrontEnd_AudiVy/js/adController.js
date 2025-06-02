@@ -19,14 +19,14 @@ export default function AdController(audioPlayer, playPauseBtn, coverImage, titl
             console.error('Erro ao reproduzir áudio da propaganda:', error);
         });
 
-        coverImage.src = 'images/logo.png'; // Optional: show logo or ad image
+        coverImage.src = 'images/logo.png'; 
         titleText.textContent = 'Publicidade';
         artistText.textContent = '';
 
         audioPlayer.onended = () => {
             isPlayingAd = false;
             songsPlayedCount = 0;
-            // Optionally, trigger next song or pause
+            
         };
     }
 
@@ -35,17 +35,17 @@ export default function AdController(audioPlayer, playPauseBtn, coverImage, titl
             songsPlayedCount++;
             if (songsPlayedCount >= 3) {
                 playAd();
-                return true; // Ad played
+                return true; 
             }
         }
-        return false; // Ad not played
+        return false; 
     }
 
     function reset() {
         songsPlayedCount = 0;
         isPlayingAd = false;
     }
-
+// Aq seria propaganda, tocar audio a cada 3 músicas
     function getIsPlayingAd() {
         return isPlayingAd;
     }

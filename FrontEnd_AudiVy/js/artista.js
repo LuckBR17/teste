@@ -36,7 +36,6 @@ document.getElementById('duration').addEventListener('input', function(e) {
     e.target.value = value;
 });
 
-// Submissão do formulário
 document.getElementById('submissionForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
@@ -65,7 +64,6 @@ document.getElementById('submissionForm').addEventListener('submit', function(e)
         return;
     }
     
-    // Simulando envio (em produção, enviaria para servidor)
     const submitBtn = document.querySelector('.submit-btn');
     const originalText = submitBtn.innerHTML;
     
@@ -78,7 +76,6 @@ document.getElementById('submissionForm').addEventListener('submit', function(e)
     }, 2000);
 });
 
-// Efeito de animação nos campos de entrada
 document.querySelectorAll('input, select, textarea').forEach(element => {
     element.addEventListener('focus', function() {
         this.parentElement.style.transform = 'translateY(-2px)';

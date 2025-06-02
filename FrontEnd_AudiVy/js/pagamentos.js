@@ -9,7 +9,6 @@ const expiryInput = document.getElementById('expiry');
 const cvvInput = document.getElementById('cvv');
 const copyPixButton = document.querySelector('.copy-pix-code');
 
-// Recuperar informações do plano selecionado do localStorage
 const selectedPlan = localStorage.getItem('selectedPlan') || 'Mensal';
 let planPrice = '29,90';
 
@@ -21,41 +20,33 @@ if (selectedPlan === 'Mensal') {
     planPrice = '69,90';
 }
 
-// Atualizar informações do plano na página
 document.getElementById('selected-plan').textContent = selectedPlan;
 document.getElementById('plan-price').textContent = planPrice;
 
-// Gerenciar seleção do método de pagamento
 paymentOptions.forEach(option => {
     option.addEventListener('click', () => {
-        // Remover classe active de todas as opções
         paymentOptions.forEach(opt => opt.classList.remove('active'));
-        // Adicionar classe active na opção selecionada
         option.classList.add('active');
 
         const method = option.dataset.method;
 
-        // Mostrar/esconder formulários apropriados
         if (method === 'pix') {
             creditDebitForm.classList.add('hidden');
             pixForm.classList.remove('hidden');
         } else {
             creditDebitForm.classList.remove('hidden');
             pixForm.classList.add('hidden');
-            // Mostrar/esconder opções de parcelamento
             installmentsGroup.style.display = method === 'credit' ? 'block' : 'none';
         }
     });
 });
 
-// Formatar número do cartão
 cardNumberInput.addEventListener('input', (e) => {
     let value = e.target.value.replace(/\D/g, '');
     value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
     e.target.value = value;
 });
 
-// Formatar data de validade
 expiryInput.addEventListener('input', (e) => {
     let value = e.target.value.replace(/\D/g, '');
     if (value.length >= 2) {
@@ -64,15 +55,12 @@ expiryInput.addEventListener('input', (e) => {
     e.target.value = value;
 });
 
-// Formatar CVV
 cvvInput.addEventListener('input', (e) => {
     e.target.value = e.target.value.replace(/\D/g, '');
 });
 
-// Copiar código PIX
 if (copyPixButton) {
     copyPixButton.addEventListener('click', () => {
-        // Simular código PIX
         const pixCode = 'AUDIVY12345PAGAMENTO';
         navigator.clipboard.writeText(pixCode)
             .then(() => {
@@ -88,7 +76,6 @@ if (copyPixButton) {
     });
 }
 
-// Validação e envio do formulário
 paymentForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -99,27 +86,22 @@ paymentForm.addEventListener('submit', (e) => {
         return;
     }
 
-    // Validar campos do cartão
     if (!validateCardFields()) {
         return;
     }
 
-    // Simular processamento do pagamento
     showLoadingState();
 
     setTimeout(() => {
-        // Simular sucesso do pagamento
         localStorage.setItem('isSubscribed', 'true');
         showSuccessMessage('Pagamento processado com sucesso! Redirecionando...');
 
-        // Redirecionar para a página inicial após 2 segundos
         setTimeout(() => {
             window.location.href = 'inicio.html';
         }, 2000);
     }, 1500);
 });
 
-// Função para validar campos do cartão
 function validateCardFields() {
     const cardNumber = cardNumberInput.value.replace(/\s/g, '');
     const expiry = expiryInput.value;
@@ -128,7 +110,6 @@ function validateCardFields() {
 
     let isValid = true;
 
-    // Validar número do cartão com Luhn
     if (!isValidCardNumber(cardNumber)) {
         showError(cardNumberInput, 'Número do cartão inválido');
         isValid = false;
@@ -136,7 +117,6 @@ function validateCardFields() {
         removeError(cardNumberInput);
     }
 
-    // Validar data de validade (formato MM/AA e validade)
     if (!isValidExpiry(expiry)) {
         showError(expiryInput, 'Data de validade inválida ou expirada');
         isValid = false;
@@ -144,7 +124,6 @@ function validateCardFields() {
         removeError(expiryInput);
     }
 
-    // Validar CVV (3 dígitos)
     if (cvv.length !== 3) {
         showError(cvvInput, 'CVV inválido');
         isValid = false;
@@ -152,7 +131,6 @@ function validateCardFields() {
         removeError(cvvInput);
     }
 
-    // Validar nome no cartão
     if (!cardName.trim()) {
         showError(document.getElementById('card-name'), 'Nome no cartão é obrigatório');
         isValid = false;
@@ -163,7 +141,6 @@ function validateCardFields() {
     return isValid;
 }
 
-// Funções auxiliares para validação
 function isValidCardNumber(cardNumber) {
     if (!/^\d{13,19}$/.test(cardNumber)) return false;
 
