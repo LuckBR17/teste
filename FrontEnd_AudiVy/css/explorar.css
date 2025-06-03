@@ -33,6 +33,25 @@ body {
     z-index: 100;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: 800;
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+    background-clip: unset;
+    color: var(--text-primary);
+    gap: 8px;
+}
+
+.logo-image {
+    width: 50px;
+    height: 32px;
+    object-fit: contain;
+}
+
 .header-content {
     max-width: 1200px;
     margin: 0 auto;
