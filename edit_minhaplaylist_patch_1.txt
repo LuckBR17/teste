@@ -1,0 +1,41 @@
+<<<<<<<
+function fetchPlaylistsFromBackend() {
+    fetch('http://localhost:8080/Playlists')
+        .then(response => response.json())
+        .then(data => {
+            playlists = data.map(pl => ({
+                id: pl.idPlaylist,
+                name: pl.nmTitulo,
+                description: '', // backend does not provide description
+                songs: [], // will fetch songs separately
+                image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=300&h=300&fit=crop' // default image
+            }));
+            renderPlaylists();
+        })
+        .catch(error => {
+            console.error('Erro ao buscar playlists do backend:', error);
+            // fallback to localStorage playlists
+            loadPlaylistsFromStorage();
+            renderPlaylists();
+        });
+}
+=======
+function fetchPlaylistsFromBackend() {
+    fetch('http://localhost:8080/Playlists')
+        .then(response => response.json())
+        .then(data => {
+            playlists = data.map(pl => ({
+                idPlaylist: pl.idPlaylist,
+                nmTitulo: pl.nmTitulo,
+                dsplaylistMusicas: [], // will fetch songs separately
+                image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=300&h=300&fit=crop' // default image
+            }));
+            renderPlaylists();
+        })
+        .catch(error => {
+            console.error('Erro ao buscar playlists do backend:', error);
+            // fallback to localStorage playlists
+            loadPlaylistsFromStorage();
+            renderPlaylists();
+        });
+}

@@ -1,0 +1,51 @@
+<<<<<<<
+function fetchSongsForPlaylist(playlistId) {
+    return fetch(`http://localhost:8080/Playlists/${playlistId}/musicas`)
+        .then(response => response.json())
+        .catch(error => {
+            console.error('Erro ao buscar músicas da playlist:', error);
+            return [];
+        });
+}
+
+function selectPlaylist(playlist) {
+    selectedPlaylist = playlist;
+    fetchSongsForPlaylist(playlist.id).then(songs => {
+        // Map backend song data to frontend song model if needed
+        selectedPlaylist.songs = songs.map(song => ({
+            id: song.idPlaylistMusicas,
+            title: song.nmMusica,
+            artist: song.nmArtista,
+            duration: song.dsDuracao,
+            album: song.nmAlbum || '',
+            file: song.dsArquivo || ''
+        }));
+        renderPlaylists();
+        renderPlaylistDetail();
+    });
+}
+=======
+function fetchSongsForPlaylist(playlistId) {
+    return fetch(`http://localhost:8080/Playlists/${playlistId}/musicas`)
+        .then(response => response.json())
+        .catch(error => {
+            console.error('Erro ao buscar músicas da playlist:', error);
+            return [];
+        });
+}
+
+function selectPlaylist(playlist) {
+    selectedPlaylist = playlist;
+    fetchSongsForPlaylist(playlist.idPlaylist).then(songs => {
+        selectedPlaylist.dsplaylistMusicas = songs.map(song => ({
+            idPlaylistMusicas: song.idPlaylistMusicas,
+            nmMusica: song.nmMusica,
+            nmArtista: song.nmArtista,
+            dsDuracao: song.dsDuracao,
+            nmAlbum: song.nmAlbum || '',
+            dsArquivo: song.dsArquivo || ''
+        }));
+        renderPlaylists();
+        renderPlaylistDetail();
+    });
+}
